@@ -16,5 +16,6 @@ public class BeforeTestClass implements BeforeAllCallback {
         PageObject.initBaseUrl();
         Browser.driver.get(PageObject.baseUrl);
         AllureEnvironment allureEnvironment = new AllureEnvironment();
+        CsvDataProvider.init();
     }
 }

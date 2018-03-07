@@ -1,8 +1,10 @@
 package pages.navigation;
 
+import infrastructure.Browser;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.PageObject;
 
 /**
@@ -17,6 +19,7 @@ public class HeaderNavigation extends PageObject {
 
     @Step("Open Account Settings page")
     public void openAccountSettings() {
+        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(settingsLink));
         settingsLink.click();
     }
 }

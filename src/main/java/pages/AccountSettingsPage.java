@@ -24,6 +24,15 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = "a[href=\"/signout\"]")
     private WebElement sighOutButton;
 
+    @FindBy(css = "input[name=\"username-settings\"]")
+    private WebElement usernameField;
+
+    @FindBy(css = "#usernameSettings .col-sm-2.col-xs-12 button[type=\"submit\"]")
+    private WebElement saveButton;
+
+    @FindBy(css = ".notification-list .notification-bar-message")
+    private WebElement message;
+
     @Step("Open Account Settings page")
     public void open() { Browser.driver.get(url); }
 
@@ -64,5 +73,28 @@ public class AccountSettingsPage extends PageObject{
 
     public static String getRelativeUrl() {
         return url;
+    }
+
+    @Step("Enter {username} into Username field")
+    public UsernameCommand enterUsername(String username) {
+        usernameField.clear();
+        usernameField.sendKeys(username);
+        return new UsernameCommand();
+    }
+
+    public boolean isUsernameUpdated(String username) {
+        Browser.waitForElement(20).until(ExpectedConditions.visibilityOf(message));
+        String messageText = message.getText();
+        Browser.driver.navigate().refresh();
+        return messageText.endsWith("Username updated successfully") ||
+                usernameField.getAttribute("value").equals(username);
+    }
+
+    public class UsernameCommand {
+        @Step("Click 'Save' button")
+        public void clickSaveButton() {
+            Browser.waitForElement(10).until(ExpectedConditions.elementToBeClickable(saveButton));
+            saveButton.click();
+        }
     }
 }

@@ -20,6 +20,7 @@ public class Browser {
         if (driver == null) {
             driver = WebDriverFactory.getDriver(Property.getProperty("browser"));
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
+            driver.manage().window().fullscreen();
         }
     }
 
