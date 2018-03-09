@@ -26,7 +26,11 @@ class AccountSettingsTests {
     private static String picture = CsvDataProvider.get("picture");
     private static String about = CsvDataProvider.get("about");
     private static String changedEmail = CsvDataProvider.get("email");
-    private static String language = "Spanish";
+    private static String language = CsvDataProvider.get("language");
+    private static String github = CsvDataProvider.get("github");
+    private static String linkedin = CsvDataProvider.get("linkedin");
+    private static String twitter = CsvDataProvider.get("twitter");
+    private static String website = CsvDataProvider.get("website");
 
     @BeforeAll
     static void preconditionSetUp() {
@@ -76,6 +80,22 @@ class AccountSettingsTests {
         settingsPage.selectLanguage(language);
 
         Assert.assertTrue("Language wasn't changed", settingsPage.isLanguageChanged(language));
+    }
+
+    @Test
+    @DisplayName("User can edit 'Internet Presence' form")
+    @Severity(SeverityLevel.CRITICAL)
+    void canEditInternetPresenceForm() {
+        AccountSettingsPage settingsPage = new AccountSettingsPage();
+        settingsPage.enterGithubURL(github);
+        settingsPage.enterLinkedin(linkedin);
+        settingsPage.enterTwitter(twitter);
+        settingsPage.enterWebsite(website);
+
+        settingsPage.saveInternetPresenceForm();
+
+        Assert.assertTrue("'Internet Presence' form isn't saved",
+                settingsPage.isInternetPresenceSaved(github, linkedin, twitter, website));
     }
 
     @AfterAll

@@ -19,24 +19,30 @@ public class AccountSettingsPage extends PageObject{
 
     private static String url = baseUrl + Property.getProperty("accountSettings");
 
+    /**
+     * 'Delete account' flow.
+     */
     @FindBy(css = "button.btn-danger:nth-of-type(2)")
     private WebElement deleteAccountButton;
+
+    @FindBy(xpath = "//button[contains(text(), 'Delete everything related to this account')]")
+    private WebElement confirmDeleteButton;
 
     @FindBy(css = "a[href=\"/signout\"]")
     private WebElement sighOutButton;
 
+    /**
+     * 'Username' form.
+     */
     @FindBy(name = "username-settings")
     private WebElement usernameField;
 
     @FindBy(css = "#usernameSettings button[type=\"submit\"]")
     private WebElement saveUsernameButton;
 
-    @FindBy(css = "#camper-identity button[type=\"submit\"]")
-    private WebElement saveBioForm;
-
-    @FindBy(css = ".notification-list .notification-bar-message")
-    private WebElement message;
-
+    /**
+     * 'Bio' form.
+     */
     @FindBy(id = "name")
     private WebElement nameField;
 
@@ -49,6 +55,12 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(id = "about")
     private WebElement aboutField;
 
+    @FindBy(css = "#camper-identity button[type=\"submit\"]")
+    private WebElement saveBioForm;
+
+    /**
+     * 'Change email' form
+     */
     @FindBy(id = "email")
     private WebElement emailField;
 
@@ -58,8 +70,37 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = "#email-form button[type=\"submit\"]")
     private WebElement saveChangeEmailForm;
 
+    /**
+     * 'Language Settings' drop-down
+     */
     @FindBy(id = "lang")
     private WebElement languageSelect;
+
+    /**
+     * 'Internet presence' form.
+     */
+    @FindBy(id = "github-url")
+    private WebElement githubURLField;
+
+    @FindBy(id = "linkedin")
+    private WebElement linkedinField;
+
+    @FindBy(id = "twitter")
+     private WebElement twitterField;
+
+    @FindBy(id = "website")
+    private WebElement websiteField;
+
+    @FindBy(css = "#internet-handle-settings button[type=\"submit\"]")
+    private WebElement saveInternetPresenceButton;
+
+    /**
+     * Success/failure message
+     */
+    @FindBy(css = ".notification-list .notification-bar-message")
+    private WebElement message;
+
+
 
     @Step("Open Account Settings page")
     public void open() { Browser.driver.get(url); }
@@ -137,11 +178,7 @@ public class AccountSettingsPage extends PageObject{
     public void deleteAccount() {
         Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(deleteAccountButton));
         deleteAccountButton.click();
-        WebElement confirmDeleteButton = Browser.waitForElement(5).until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//button[contains(text(), 'Delete everything related to this account')]")
-                )
-        );
+        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(confirmDeleteButton));
         confirmDeleteButton.click();
     }
 
@@ -181,7 +218,7 @@ public class AccountSettingsPage extends PageObject{
     }
 
     /**
-     * Methods for Change language test.
+     * Methods for 'Change language' test.
      * @param language
      */
     @Step("Select {language} language from the list")
@@ -197,6 +234,35 @@ public class AccountSettingsPage extends PageObject{
         return message.equalsIgnoreCase("Your language has been updated to '" + language + "'") ||
                 select.getFirstSelectedOption().getText().equalsIgnoreCase(language);
     }
+
+    /**
+     * Methods for 'Internet Presence form' test.
+     */
+    @Step("Enter Github URL ({github})")
+    public void enterGithubURL(String githubURL) {
+        githubURLField.sendKeys(githubURL);
+    }
+
+    @Step("Enter Linkedin ({linkedin})")
+    public void enterLinkedin(String linkedin) {
+        linkedinField.sendKeys(linkedin);
+    }
+
+    @Step("Enter Twitter ({twitter})")
+    public void enterTwitter(String twitter) {
+        twitterField.sendKeys(twitter);
+    }
+
+    @Step("Enter Website ({website})")
+    public void enterWebsite(String website) {
+        websiteField.sendKeys(website);
+    }
+
+    @Step("Save 'Internet Presence' form")
+    public void saveInternetPresenceForm() {
+        save(saveInternetPresenceButton);
+    }
+
 
     /**
      * LogOut command to log out in precondition or clean up.
@@ -238,4 +304,12 @@ public class AccountSettingsPage extends PageObject{
     }
 
 
+    public boolean isInternetPresenceSaved(String github, String linkedin, String twitter, String website) {
+        String message = getSuccessMessage();
+        return message.equals("We have successfully updated your account.") ||
+                githubURLField.getAttribute("value").equals(github) ||
+                linkedinField.getAttribute("value").equals(linkedin) ||
+                twitterField.getAttribute("value").equals(twitter) ||
+                websiteField.getAttribute("value").equals(website);
+    }
 }
