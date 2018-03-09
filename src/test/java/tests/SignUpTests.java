@@ -7,6 +7,7 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +22,7 @@ import utils.EmailGenerator;
 @ExtendWith(BeforeTestClass.class)
 @ExtendWith(AfterTestClass.class)
 @ExtendWith(AllureReportExtension.class)
-public class SignUpTests {
+class SignUpTests {
 
     private static String email = EmailGenerator.generateEmail();
 
@@ -29,7 +30,7 @@ public class SignUpTests {
     @Feature("Sign Up")
     @DisplayName("User can sign up")
     @Severity(SeverityLevel.CRITICAL)
-    public void canSignUp() {
+    void canSignUp() {
 
         /**
          * Initialize page instances.
@@ -55,13 +56,13 @@ public class SignUpTests {
         Assert.assertTrue("User is't signed in", new AccountSettingsPage().isSignedIn());
     }
 
-    @After
-    public void afterTestCleanUp() {
+    @AfterEach
+    void afterTestCleanUp() {
         new SignUpPage().cleanUp();
     }
 
     @AfterAll
-    public static void afterClassCleanUp() {
+    static void afterClassCleanUp() {
         new MailHog().cleanUp();
     }
 }

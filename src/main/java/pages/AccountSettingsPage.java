@@ -24,18 +24,111 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = "a[href=\"/signout\"]")
     private WebElement sighOutButton;
 
-    @FindBy(css = "input[name=\"username-settings\"]")
+    @FindBy(name = "username-settings")
     private WebElement usernameField;
 
-    @FindBy(css = "#usernameSettings .col-sm-2.col-xs-12 button[type=\"submit\"]")
-    private WebElement saveButton;
+    @FindBy(css = "#usernameSettings button[type=\"submit\"]")
+    private WebElement saveUsernameButton;
+
+    @FindBy(css = "#camper-identity button[type=\"submit\"]")
+    private WebElement saveBioForm;
 
     @FindBy(css = ".notification-list .notification-bar-message")
     private WebElement message;
 
+    @FindBy(id = "name")
+    private WebElement nameField;
+
+    @FindBy(id = "location")
+    private WebElement locationField;
+
+    @FindBy(id = "picture")
+    private WebElement pictureField;
+
+    @FindBy(id = "about")
+    private WebElement aboutField;
+
+    @FindBy(id = "email")
+    private WebElement emailField;
+
+    @FindBy(id = "confirm-email")
+    private WebElement confirmEmailField;
+
+    @FindBy(css = "#email-form button[type=\"submit\"]")
+    private WebElement saveChangeEmailForm;
+
     @Step("Open Account Settings page")
     public void open() { Browser.driver.get(url); }
 
+    @Step("Click 'Sigh Out' Button")
+    public void clickSignOutButton() {
+        sighOutButton.click();
+    }
+
+    /**
+     * Methods for Username field.
+     * @param username
+     * @return
+     */
+    @Step("Enter {username} into Username field")
+    public AccountSettingsPage enterUsername(String username) {
+        usernameField.clear();
+        usernameField.sendKeys(username);
+        return this;
+    }
+
+    @Step("Click 'Save' button")
+    public void saveUsernameForm() {
+            save(saveUsernameButton);
+        }
+
+
+    @Step("Verify that username is updated")
+    public boolean isUsernameUpdated(String username) {
+        String successMessage = getSuccessMessage();
+        return successMessage.endsWith("Username updated successfully") ||
+                usernameField.getAttribute("value").equals(username);
+    }
+
+    /**
+     * Methods for Bio form.
+     */
+    @Step("Enter name ({name}), location ({location}), picture URL ({picture}), about ({about}) into Bio form")
+    public AccountSettingsPage enterDataIntoBioForm(String name, String location, String picture, String about) {
+        nameField.clear();
+        nameField.sendKeys(name);
+
+        locationField.clear();
+        locationField.sendKeys(location);
+
+        pictureField.clear();
+        pictureField.sendKeys(picture);
+
+        aboutField.clear();
+        aboutField.sendKeys(about);
+
+        return this;
+    }
+
+    @Step("Click 'Save' button")
+    public void saveBioForm() {
+            save(saveBioForm);
+        }
+
+
+    @Step("Verify that Bio form is updated")
+    public boolean isBioFormUpdated(String name, String location, String picture, String about) {
+        String successMessage = getSuccessMessage();
+        return successMessage.endsWith("We have successfully updated your account.") ||
+                nameField.getAttribute("value").equals(name) ||
+                locationField.getAttribute("value").equals(location) ||
+                pictureField.getAttribute("value").equals(picture) ||
+                aboutField.getAttribute("value").equals(about);
+    }
+
+    /**
+     * Methods for Delete account feature.
+     */
     @Step("Delete Account")
     public void deleteAccount() {
         Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(deleteAccountButton));
@@ -48,22 +141,45 @@ public class AccountSettingsPage extends PageObject{
         confirmDeleteButton.click();
     }
 
+    @Step("Verify that account is deleted")
+    public void isDeleted() {
+
+    }
+
+    /**
+     * Methods for Change email feature.
+     */
+    @Step("Enter new email ({changedEmail})")
+    public AccountSettingsPage enterEmail(String changedEmail) {
+        emailField.clear();
+        emailField.sendKeys(changedEmail);
+        return this;
+    }
+
+    @Step("Enter confirm email {confirmEmail}")
+    public AccountSettingsPage enterConfirmEmail(String confirmEmail) {
+        confirmEmailField.clear();
+        confirmEmailField.sendKeys(confirmEmail);
+        return this;
+    }
+
+    @Step("Click 'Save' button")
+    public void saveEmailForm() {
+
+    }
+
+    /**
+     * LogOut command to log out in precondition or clean up.
+     */
     @Step("Log out")
     public void logOut() {
         open();
         sighOutButton.click();
     }
 
-    @Step("Click 'Sigh Out' Button")
-    public void clickSignOutButton() {
-        sighOutButton.click();
-    }
-
-    @Step("Verify that account is deleted")
-    public void isDeleted() {
-
-    }
-
+    /**
+     * Check if user is signed in.
+     */
     @Step("Verify that right user is signed in")
     public boolean isSignedIn() {
         if (!(Browser.driver.getCurrentUrl().equals(url))) open();
@@ -71,30 +187,23 @@ public class AccountSettingsPage extends PageObject{
         return email.getAttribute("value").equals(SignUpPage.getEmail());
     }
 
+    /**
+     * Helper methods for steps.
+     * @return
+     */
     public static String getRelativeUrl() {
         return url;
     }
 
-    @Step("Enter {username} into Username field")
-    public UsernameCommand enterUsername(String username) {
-        usernameField.clear();
-        usernameField.sendKeys(username);
-        return new UsernameCommand();
+    private void save(WebElement button) {
+        Browser.waitForElement(10).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
     }
 
-    public boolean isUsernameUpdated(String username) {
+    private String getSuccessMessage() {
         Browser.waitForElement(20).until(ExpectedConditions.visibilityOf(message));
         String messageText = message.getText();
         Browser.driver.navigate().refresh();
-        return messageText.endsWith("Username updated successfully") ||
-                usernameField.getAttribute("value").equals(username);
-    }
-
-    public class UsernameCommand {
-        @Step("Click 'Save' button")
-        public void clickSaveButton() {
-            Browser.waitForElement(10).until(ExpectedConditions.elementToBeClickable(saveButton));
-            saveButton.click();
-        }
+        return messageText;
     }
 }

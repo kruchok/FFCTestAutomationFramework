@@ -17,12 +17,12 @@ import utils.EmailGenerator;
  */
 @ExtendWith({BeforeTestClass.class, AfterTestClass.class})
 @ExtendWith(AllureReportExtension.class)
-public class SignInTests {
+class SignInTests {
 
     private static String email = EmailGenerator.generateEmail();
 
     @BeforeAll
-    public static void beforeClass() {
+    static void beforeClass() {
         new SignUpPage().signUp(email);
         new AccountSettingsPage().logOut();
     }
@@ -31,7 +31,7 @@ public class SignInTests {
     @Feature("Sign In")
     @DisplayName("User can sign in")
     @Severity(SeverityLevel.CRITICAL)
-    public void canSignIn() {
+    void canSignIn() {
         HomePage homePage = new HomePage();
 
         homePage.open();
@@ -52,7 +52,7 @@ public class SignInTests {
     }
 
     @AfterAll
-    public static void afterClass() {
+    static void afterClass() {
         new SignInPage().cleanUp();
         new MailHog().cleanUp();
     }

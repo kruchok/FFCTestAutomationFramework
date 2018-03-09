@@ -20,30 +20,57 @@ import utils.UsernameGenerator;
  */
 @ExtendWith({BeforeTestClass.class, AfterTestClass.class})
 @ExtendWith(AllureReportExtension.class)
-public class AccountSettingsTests {
+class AccountSettingsTests {
 
     private static String email = EmailGenerator.generateEmail();
     private static String username = UsernameGenerator.generateUsername();
+    private static String name = CsvDataProvider.get("name");
+    private static String location = CsvDataProvider.get("location");
+    private static String picture = CsvDataProvider.get("picture");
+    private static String about = CsvDataProvider.get("about");
+    private static String changedEmail = CsvDataProvider.get("email");
 
     @BeforeAll
-    public static void preconditionSetUp() {
+    static void preconditionSetUp() {
         new SignUpPage().signUp(email);
     }
 
     @Test
     @DisplayName("User can change Username")
     @Severity(SeverityLevel.TRIVIAL)
-    public void canChangeUsername() {
+    void canChangeUsername() {
         new HeaderNavigation().openAccountSettings();
 
         AccountSettingsPage settingsPage = new AccountSettingsPage();
-        settingsPage.enterUsername(username).clickSaveButton();
+        settingsPage.enterUsername(username).saveUsernameForm();
 
         Assert.assertTrue("No success message", settingsPage.isUsernameUpdated(username));
     }
 
+    @Test
+    @DisplayName("User can edit Bio")
+    @Severity(SeverityLevel.NORMAL)
+    void canEditBio() {
+        new HeaderNavigation().openAccountSettings();
+
+        AccountSettingsPage settingsPage = new AccountSettingsPage();
+        settingsPage.enterDataIntoBioForm(name, location, picture, about).saveBioForm();
+
+        Assert.assertTrue("Bio form isn't updated", settingsPage.isBioFormUpdated(name, location, picture, about));
+    }
+
+    @Test
+    @DisplayName("User can change email")
+    @Severity(SeverityLevel.CRITICAL)
+    void canChangeEmail() {
+        new HeaderNavigation().openAccountSettings();
+
+        AccountSettingsPage settingsPage = new AccountSettingsPage();
+        settingsPage.enterEmail(changedEmail).enterConfirmEmail(changedEmail).saveEmailForm();
+    }
+
     @AfterAll
-    public static void cleanUp() {
+    static void cleanUp() {
         new SignUpPage().cleanUp();
         new MailHog().cleanUp();
     }
