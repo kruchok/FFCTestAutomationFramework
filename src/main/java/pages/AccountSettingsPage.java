@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 
 /**
@@ -56,6 +57,9 @@ public class AccountSettingsPage extends PageObject{
 
     @FindBy(css = "#email-form button[type=\"submit\"]")
     private WebElement saveChangeEmailForm;
+
+    @FindBy(id = "lang")
+    private WebElement languageSelect;
 
     @Step("Open Account Settings page")
     public void open() { Browser.driver.get(url); }
@@ -165,7 +169,33 @@ public class AccountSettingsPage extends PageObject{
 
     @Step("Click 'Save' button")
     public void saveEmailForm() {
+        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(saveChangeEmailForm));
+        saveChangeEmailForm.click();
+    }
 
+    @Step("Verify that email is changed to {changedEmail}")
+    public boolean isEmailChanged(String changedEmail) {
+        String message = getSuccessMessage();
+        return message.equalsIgnoreCase("") ||
+                emailField.getAttribute("value").equals(changedEmail);
+    }
+
+    /**
+     * Methods for Change language test.
+     * @param language
+     */
+    @Step("Select {language} language from the list")
+    public void selectLanguage(String language) {
+        Select select = new Select(languageSelect);
+        select.selectByVisibleText(language);
+    }
+
+    @Step("Verify that language is changed to {language}")
+    public boolean isLanguageChanged(String language) {
+        String message = getSuccessMessage();
+        Select select = new Select(languageSelect);
+        return message.equalsIgnoreCase("Your language has been updated to '" + language + "'") ||
+                select.getFirstSelectedOption().getText().equalsIgnoreCase(language);
     }
 
     /**
@@ -206,4 +236,6 @@ public class AccountSettingsPage extends PageObject{
         Browser.driver.navigate().refresh();
         return messageText;
     }
+
+
 }
