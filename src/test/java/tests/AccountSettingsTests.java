@@ -94,8 +94,17 @@ class AccountSettingsTests {
 
         settingsPage.saveInternetPresenceForm();
 
-        Assert.assertTrue("'Internet Presence' form isn't saved",
-                settingsPage.isInternetPresenceSaved(github, linkedin, twitter, website));
+//        Assert.assertTrue("'Internet Presence' form isn't saved",
+//                settingsPage.isInternetPresenceSaved(github, linkedin, twitter, website));
+
+        Assertions.assertAll("'Internet Presence' form isn't saved", () -> {
+                    Assertions.assertTrue(settingsPage.isMessageAppears("We have successfully updated your account."));
+                    Assertions.assertTrue(settingsPage.isGithubSaved(github));
+                    Assertions.assertTrue(settingsPage.isLinkedinSaved(linkedin));
+                    Assertions.assertTrue(settingsPage.isTwitterSaved(twitter));
+                    Assertions.assertTrue(settingsPage.isWebsiteSaved(website));
+                }
+            );
     }
 
     @AfterAll

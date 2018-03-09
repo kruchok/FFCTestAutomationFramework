@@ -100,8 +100,6 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = ".notification-list .notification-bar-message")
     private WebElement message;
 
-
-
     @Step("Open Account Settings page")
     public void open() { Browser.driver.get(url); }
 
@@ -126,7 +124,6 @@ public class AccountSettingsPage extends PageObject{
     public void saveUsernameForm() {
             save(saveUsernameButton);
         }
-
 
     @Step("Verify that username is updated")
     public boolean isUsernameUpdated(String username) {
@@ -263,7 +260,6 @@ public class AccountSettingsPage extends PageObject{
         save(saveInternetPresenceButton);
     }
 
-
     /**
      * LogOut command to log out in precondition or clean up.
      */
@@ -303,13 +299,29 @@ public class AccountSettingsPage extends PageObject{
         return messageText;
     }
 
+    @Step("Verify that '{message}' message appears")
+    public boolean isMessageAppears(String message) {
+        String text = getSuccessMessage();
+        return text.equals(message);
+    }
 
-    public boolean isInternetPresenceSaved(String github, String linkedin, String twitter, String website) {
-        String message = getSuccessMessage();
-        return message.equals("We have successfully updated your account.") ||
-                githubURLField.getAttribute("value").equals(github) ||
-                linkedinField.getAttribute("value").equals(linkedin) ||
-                twitterField.getAttribute("value").equals(twitter) ||
-                websiteField.getAttribute("value").equals(website);
+    @Step("Verify that Github is {github}")
+    public boolean isGithubSaved(String github) {
+        return githubURLField.getAttribute("value").equals(github);
+    }
+
+    @Step("Verify that Linkedin is {linkedin}")
+    public boolean isLinkedinSaved(String linkedin) {
+        return linkedinField.getAttribute("value").equals(linkedin);
+    }
+
+    @Step("Verify that Twitter is {twitter}")
+    public boolean isTwitterSaved(String twitter) {
+        return twitterField.getAttribute("value").equals(twitter);
+    }
+
+    @Step("Verify that Website is {website}")
+    public boolean isWebsiteSaved(String website) {
+        return websiteField.getAttribute("value").equals(website);
     }
 }
