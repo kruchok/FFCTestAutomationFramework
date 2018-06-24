@@ -1,10 +1,10 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.CurrentTime;
 
 /**
  * Created by eugeniya.kruchok on 27.02.2018.
@@ -28,6 +28,7 @@ public class HomePage extends PageObject {
     @Step("Open Homepage by URL")
     public void open() {
         Browser.driver.get(baseUrl);
+        Browser.logger.debug(this.getClass().getSimpleName() + " is opened at" + CurrentTime.getCurrentTime());
     }
 
     @Step("Open Sign Up page by clicking 'Start coding' button")

@@ -1,7 +1,7 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
+import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +17,7 @@ public class SignInPage extends SignPage implements SignIn {
         super();
     }
 
-    private static String url = baseUrl + Property.getProperty("signIn");
+    private static String url = baseUrl + Config.getProperty("signIn");
 
     @FindBy(id = "flash-content")
     private WebElement successText;
@@ -33,12 +33,4 @@ public class SignInPage extends SignPage implements SignIn {
         Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(successText));
         return successText.getText().contains("If you entered a valid email, a magic link is on its way");
     }
-
-    @Override
-    @Step("Sign in user with {email} email")
-    public void signIn(String email) {
-        open();
-        signUpOrSignIn(email);
-    }
-
 }

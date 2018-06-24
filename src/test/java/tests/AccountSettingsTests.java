@@ -3,14 +3,13 @@ package tests;
 import infrastructure.*;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.AccountSettingsPage;
 import pages.SignUpPage;
 import pages.navigation.HeaderNavigation;
-import utils.EmailGenerator;
-import utils.UsernameGenerator;
+import utils.StringGenerator;
 
 /**
  * Created by eugeniya.kruchok on 06.03.2018.
@@ -19,15 +18,15 @@ import utils.UsernameGenerator;
 @ExtendWith(AllureReportExtension.class)
 class AccountSettingsTests {
 
-    private static String email = EmailGenerator.generateEmail();
-    private static String username = UsernameGenerator.generateUsername();
+    private static String email = StringGenerator.generateEmail();
+    private static String username = StringGenerator.generateUsername();
     private static String name = CsvDataProvider.get("name");
     private static String location = CsvDataProvider.get("location");
     private static String picture = CsvDataProvider.get("picture");
     private static String about = CsvDataProvider.get("about");
-    private static String changedEmail = CsvDataProvider.get("email");
+    private static String changedEmail = StringGenerator.generateEmail();
     private static String language = CsvDataProvider.get("language");
-    private static String github = CsvDataProvider.get("github");
+    private static String github = CsvDataProvider.get("githubUrl");
     private static String linkedin = CsvDataProvider.get("linkedin");
     private static String twitter = CsvDataProvider.get("twitter");
     private static String website = CsvDataProvider.get("website");
@@ -49,7 +48,7 @@ class AccountSettingsTests {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
         settingsPage.enterUsername(username).saveUsernameForm();
 
-        Assert.assertTrue("No success message", settingsPage.isUsernameUpdated(username));
+        Assertions.assertTrue(settingsPage.isUsernameUpdated(username), "No success message");
     }
 
     @Test
@@ -59,7 +58,7 @@ class AccountSettingsTests {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
         settingsPage.enterDataIntoBioForm(name, location, picture, about).saveBioForm();
 
-        Assert.assertTrue("Bio form isn't updated", settingsPage.isBioFormUpdated(name, location, picture, about));
+        Assertions.assertTrue(settingsPage.isBioFormUpdated(name, location, picture, about), "Bio form isn't updated");
     }
 
     @Test
@@ -69,7 +68,7 @@ class AccountSettingsTests {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
         settingsPage.enterEmail(changedEmail).enterConfirmEmail(changedEmail).saveEmailForm();
 
-        Assert.assertTrue("Email isn't changed", settingsPage.isEmailChanged(changedEmail));
+        Assertions.assertTrue(settingsPage.isEmailChanged(changedEmail), "Email isn't changed");
     }
 
     @Test
@@ -79,7 +78,7 @@ class AccountSettingsTests {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
         settingsPage.selectLanguage(language);
 
-        Assert.assertTrue("Language wasn't changed", settingsPage.isLanguageChanged(language));
+        Assertions.assertTrue(settingsPage.isLanguageChanged(language), "Language wasn't changed");
     }
 
     @Test
@@ -99,7 +98,7 @@ class AccountSettingsTests {
 
         Assertions.assertAll("'Internet Presence' form isn't saved", () -> {
                     Assertions.assertTrue(settingsPage.isMessageAppears("We have successfully updated your account."));
-                    Assertions.assertTrue(settingsPage.isGithubSaved(github));
+                    Assertions.assertTrue(settingsPage.isGithubSaved("hhfhfha"), "GitHub link isn't saved");
                     Assertions.assertTrue(settingsPage.isLinkedinSaved(linkedin));
                     Assertions.assertTrue(settingsPage.isTwitterSaved(twitter));
                     Assertions.assertTrue(settingsPage.isWebsiteSaved(website));

@@ -4,13 +4,10 @@ import infrastructure.*;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.*;
-import pages.interfaces.SignIn;
-import pages.navigation.HeaderNavigation;
-import utils.EmailGenerator;
+import utils.StringGenerator;
 
 /**
  * Created by eugeniya.kruchok on 27.02.2018.
@@ -19,7 +16,7 @@ import utils.EmailGenerator;
 @ExtendWith(AllureReportExtension.class)
 class SignInTests {
 
-    private static String email = EmailGenerator.generateEmail();
+    private static String email = StringGenerator.generateEmail();
 
     @BeforeAll
     static void beforeClass() {
@@ -28,7 +25,6 @@ class SignInTests {
     }
 
     @Test
-    @Feature("Sign In")
     @DisplayName("User can sign in")
     @Severity(SeverityLevel.CRITICAL)
     void canSignIn() {
@@ -40,15 +36,17 @@ class SignInTests {
         SignInPage signInPage = new SignInPage();
         signInPage.enterEmail(email).clickGetLinkButton();
 
-        Assert.assertTrue("There is no success message", signInPage.isSuccess());
+        Assertions.assertTrue(signInPage.isSuccess(), "There is no success message");
 
         MailHog mailHog = new MailHog();
         mailHog.open();
         mailHog.followLinkToSignIn();
 
-        Assert.assertTrue("Current URL is " + Browser.driver.getCurrentUrl() +
-                " while should be " + StartLearningPage.getUrl(), new StartLearningPage().isAt());
-        Assert.assertTrue("User is't signed in", new AccountSettingsPage().isSignedIn());
+        Assertions.assertAll("User isn't signed in", () -> {
+            Assertions.assertTrue(new StartLearningPage().isAt(), "Current URL is " + Browser.driver.getCurrentUrl() +
+                    " while should be " + StartLearningPage.getUrl());
+            Assertions.assertTrue(new AccountSettingsPage().isSignedIn(), "User is't signed in");
+        });
     }
 
     @AfterAll

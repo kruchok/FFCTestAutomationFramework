@@ -1,7 +1,7 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
+import infrastructure.Config;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -17,11 +17,13 @@ public abstract class PageObject {
     }
 
     public static void initBaseUrl() {
-        String mavenProperty = System.getProperty("env");
-        if (mavenProperty.equalsIgnoreCase("localhost")) {
-            baseUrl = Property.getProperty("localhost");
-        } else if (mavenProperty.equalsIgnoreCase("demo")) {
-            baseUrl = Property.getProperty("demo");
+        String environment = System.getProperty("env");
+        if (environment.equalsIgnoreCase("localhost")) {
+            baseUrl = Config.getProperty("localhost");
+        } else if (environment.equalsIgnoreCase("demo")) {
+            baseUrl = Config.getProperty("demo");
+        } else if (environment.equalsIgnoreCase("external")) {
+            baseUrl = Config.getProperty("external");
         }
     }
 
@@ -30,7 +32,7 @@ public abstract class PageObject {
     }
 
     public static String getRelativeUrl(String pageName) {
-        return Property.getProperty(pageName);
+        return Config.getProperty(pageName);
     }
 
     public boolean isCurrentUrl(String url) {

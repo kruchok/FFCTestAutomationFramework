@@ -1,0 +1,4 @@
+tests/SignInTests.class
+tests/LogOutTests.class
+tests/AccountSettingsTests.class
+tests/SignUpTests.class

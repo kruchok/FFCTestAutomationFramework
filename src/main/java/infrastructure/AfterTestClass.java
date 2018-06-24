@@ -1,7 +1,7 @@
 package infrastructure;
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
-import org.junit.jupiter.api.extension.ContainerExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  * Created by eugeniya.kruchok on 01.03.2018.
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ContainerExtensionContext;
 public class AfterTestClass implements AfterAllCallback {
 
     @Override
-    public void afterAll(ContainerExtensionContext containerExtensionContext) throws Exception {
+    public void afterAll(ExtensionContext containerExtensionContext) throws Exception {
 //        Browser.driver.quit();
     }
 }

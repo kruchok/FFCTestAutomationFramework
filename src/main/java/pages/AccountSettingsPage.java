@@ -1,13 +1,14 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
+import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import utils.CurrentTime;
 
 
 /**
@@ -15,9 +16,15 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class AccountSettingsPage extends PageObject{
 
-    public AccountSettingsPage() { super(); }
+    public AccountSettingsPage() {
+        super();
+        Browser.logger.debug(this.getClass().getSimpleName()
+                + " is opened at "
+                + CurrentTime.getCurrentTime()
+        );
+    }
 
-    private static String url = baseUrl + Property.getProperty("accountSettings");
+    private static String url = baseUrl + Config.getProperty("accountSettings");
 
     /**
      * 'Delete account' flow.
@@ -70,6 +77,9 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = "#email-form button[type=\"submit\"]")
     private WebElement saveChangeEmailForm;
 
+    @FindBy(css = ".email-settings .help-block [role='alert']")
+    private WebElement verifyEmailAddressMessage;
+
     /**
      * 'Language Settings' drop-down
      */
@@ -101,7 +111,12 @@ public class AccountSettingsPage extends PageObject{
     private WebElement message;
 
     @Step("Open Account Settings page")
-    public void open() { Browser.driver.get(url); }
+    public void open() {
+        Browser.driver.get(url);
+        Browser.logger.debug(this.getClass().getSimpleName()
+                + " is opened at "
+                + CurrentTime.getCurrentTime());
+    }
 
     @Step("Click 'Sigh Out' Button")
     public void clickSignOutButton() {
@@ -191,6 +206,9 @@ public class AccountSettingsPage extends PageObject{
     public AccountSettingsPage enterEmail(String changedEmail) {
         emailField.clear();
         emailField.sendKeys(changedEmail);
+        Browser.waitForElement(10).until(ExpectedConditions.attributeToBe(
+                emailField, "value", changedEmail)
+        );
         return this;
     }
 
@@ -198,6 +216,9 @@ public class AccountSettingsPage extends PageObject{
     public AccountSettingsPage enterConfirmEmail(String confirmEmail) {
         confirmEmailField.clear();
         confirmEmailField.sendKeys(confirmEmail);
+        Browser.waitForElement(10).until(ExpectedConditions.attributeToBe(
+                confirmEmailField, "value", confirmEmail)
+        );
         return this;
     }
 
@@ -209,8 +230,8 @@ public class AccountSettingsPage extends PageObject{
 
     @Step("Verify that email is changed to {changedEmail}")
     public boolean isEmailChanged(String changedEmail) {
-        String message = getSuccessMessage();
-        return message.equalsIgnoreCase("") ||
+        Browser.refreshPage();
+        return verifyEmailAddressMessage.getText().contains("A change of email adress has not been verified.") ||
                 emailField.getAttribute("value").equals(changedEmail);
     }
 
@@ -235,7 +256,7 @@ public class AccountSettingsPage extends PageObject{
     /**
      * Methods for 'Internet Presence form' test.
      */
-    @Step("Enter Github URL ({github})")
+    @Step("Enter Github URL ({githubURL})")
     public void enterGithubURL(String githubURL) {
         githubURLField.sendKeys(githubURL);
     }
@@ -295,7 +316,7 @@ public class AccountSettingsPage extends PageObject{
     private String getSuccessMessage() {
         Browser.waitForElement(20).until(ExpectedConditions.visibilityOf(message));
         String messageText = message.getText();
-        Browser.driver.navigate().refresh();
+        Browser.refreshPage();
         return messageText;
     }
 

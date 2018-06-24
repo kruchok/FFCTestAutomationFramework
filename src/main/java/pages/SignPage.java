@@ -40,9 +40,7 @@ public class SignPage extends PageObject {
     public EmailCommand enterEmail(String email) {
         emailField.clear();
         emailField.sendKeys(email);
-
         SignPage.email = email;
-
         return new EmailCommand();
     }
 
@@ -53,7 +51,8 @@ public class SignPage extends PageObject {
         settingsPage.deleteAccount();
     }
 
-    protected void signUpOrSignIn(String email) {
+    @Step("Sign in user with {email} email")
+    public void signIn(String email) {
         SignPage signPage = new SignPage();
 
         signPage.enterEmail(email).clickGetLinkButton();

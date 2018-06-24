@@ -1,6 +1,7 @@
 package infrastructure;
 
 import driver.WebDriverFactory;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,10 +16,11 @@ public class Browser {
     public static WebDriverWait wait;
     public static ArrayList<String> windows;
     private static int defaultWait = 20;
+    public static Logger logger;
 
     public static void setDriver() {
         if (driver == null) {
-            driver = WebDriverFactory.getDriver(Property.getProperty("browser"));
+            driver = WebDriverFactory.getDriver();
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
             driver.manage().window().fullscreen();
         }
@@ -54,5 +56,9 @@ public class Browser {
         windows = new ArrayList<>(driver.getWindowHandles());
         int lastWinIndex = windows.size() - 1;
         driver.switchTo().window(windows.get(lastWinIndex));
+    }
+
+    public static void refreshPage() {
+        Browser.driver.navigate().refresh();
     }
 }

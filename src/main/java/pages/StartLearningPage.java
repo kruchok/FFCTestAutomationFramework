@@ -1,7 +1,7 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
+import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class StartLearningPage extends PageObject {
 
-    private static String url = baseUrl + Property.getProperty("challenges") +
-            Property.getProperty("basicHtmlAndHtml5") +
-            Property.getProperty("learnHow");
+    private static String url = baseUrl + Config.getProperty("challenges") +
+            Config.getProperty("basicHtmlAndHtml5") +
+            Config.getProperty("learnHow");
 
     @Step("Verify that current page is Start Learning page")
     public boolean isAt() {

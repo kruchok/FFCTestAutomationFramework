@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
  */
 public class MailHog extends PageObject {
 
-    private static String url = Property.getProperty("mailhog");
+    private static String url = Config.getProperty("mailhog");
 
     @FindBy(css = "div.msglist-message")
     private WebElement mail;

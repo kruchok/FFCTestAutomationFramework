@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tests.LogOutTests" time="22.697" tests="1" errors="1" skipped="0" failures="0">
+  <properties/>
+  <testcase name="tests.LogOutTests" classname="tests.LogOutTests" time="22.697">
+    <error message="Returned value cannot be converted to WebElement: {message=no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;input[type=&quot;email&quot;]&quot;}&#10;  (Session info: chrome=66.0.3359.158)&#10;  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)}&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;MBP-Eugeniya.lan&apos;, ip: &apos;fe80:0:0:0:1497:42c3:5ae5:a0df%en0&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.13.5&apos;, java.version: &apos;1.8.0_131&apos;&#10;Driver info: driver.version: AndroidDriver" type="org.openqa.selenium.WebDriverException">org.openqa.selenium.WebDriverException: 
+Returned value cannot be converted to WebElement: {message=no such element: Unable to locate element: {"method":"css selector","selector":"input[type="email"]"}
+  (Session info: chrome=66.0.3359.158)
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)}
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'MBP-Eugeniya.lan', ip: 'fe80:0:0:0:1497:42c3:5ae5:a0df%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.5', java.version: '1.8.0_131'
+Driver info: driver.version: AndroidDriver
+	at tests.LogOutTests.beforeClass(LogOutTests.java:31)
+Caused by: java.lang.ClassCastException: com.google.common.collect.Maps$TransformedEntriesMap cannot be cast to org.openqa.selenium.WebElement
+	at tests.LogOutTests.beforeClass(LogOutTests.java:31)
+</error>
+    <system-out><![CDATA[[Appium] Welcome to Appium v1.8.1
+[Appium] Appium REST http interface listener started on 0.0.0.0:4723
+[HTTP] --> GET /wd/hub/status
+[HTTP] {}
+[debug] [MJSONWP] Calling AppiumDriver.getStatus() with args: []
+[debug] [MJSONWP] Responding to client with driver.getStatus() result: {"build":{"version":"1.8.1","revision":null}}
+[HTTP] <-- GET /wd/hub/status 200 24 ms - 83
+[HTTP] 
+[HTTP] --> POST /wd/hub/session
+[HTTP] {"desiredCapabilities":{"browserName":"Chrome","platformName":"Android","deviceName":"Pixel 2 XL","avd":"Pixel_2_XL_API_26","platformVersion":"8.0"},"capabilities":{"desiredCapabilities":{"browserName":"Chrome","platformName":"Android","deviceName":"Pixel 2 XL","avd":"Pixel_2_XL_API_26","platformVersion":"8.0"},"firstMatch":[{"appium:avd":"Pixel_2_XL_API_26","browserName":"Chrome","appium:deviceName":"Pixel 2 XL","platformName":"android","appium:platformVersion":"8.0"}]}}
+[debug] [MJSONWP] Calling AppiumDriver.createSession() with args: [{"browserName":"Chrome","platformName":"Android","deviceName":"Pixel 2 XL","avd":"Pixel_2_XL_API_26","platformVersion":"8.0"},null,{"desiredCapabilities":{"browserName":"Chrome","platformName":"Android","deviceName":"Pixel 2 XL","avd":"Pixel_2_XL_API_26","platformVersion":"8.0"},"firstMatch":[{"appium:avd":"Pixel_2_XL_API_26","browserName":"Chrome","appium:deviceName":"Pixel 2 XL","platformName":"android","appium:platformVersion":"8.0"}]}]
+[debug] [BaseDriver] Event 'newSessionRequested' logged at 1529482365968 (11:12:45 GMT+0300 (EEST))
+[Appium] Consider setting 'automationName' capability to 'uiautomator2' on Android >= 6, since UIAutomator framework is not maintained anymore by the OS vendor.
+[Appium] Creating new AndroidDriver (v2.7.0) session
+[Appium] Capabilities:
+[Appium]   browserName: Chrome
+[Appium]   platformName: android
+[Appium]   avd: Pixel_2_XL_API_26
+[Appium]   deviceName: Pixel 2 XL
+[Appium]   platformVersion: 8.0
+[debug] [BaseDriver] W3C capabilities {"alwaysMatch":{"browserNam... and MJSONWP desired capabilities [object Object] were provided
+[debug] [BaseDriver] Creating session with W3C capabilities: {"alwaysMatch":{"browserNam...
+[BaseDriver] Session created with session id: 8a7a99fa-5f49-4536-b380-a38221693898
+[debug] [AndroidDriver] Getting Java version
+[AndroidDriver] Java version is: 1.8.0_131
+[AndroidDriver] We're going to run a Chrome-based session
+[AndroidDriver] Chrome-type package and activity are com.android.chrome and com.google.android.apps.chrome.Main
+[ADB] Checking whether adb is present
+[ADB] Found 3 'build-tools' folders under '/Users/eugeniya.kruchok/Library/Android/sdk' (newest first):
+[ADB]     /Users/eugeniya.kruchok/Library/Android/sdk/build-tools/28.0.0
+[ADB]     /Users/eugeniya.kruchok/Library/Android/sdk/build-tools/26.0.1
+[ADB]     /Users/eugeniya.kruchok/Library/Android/sdk/build-tools/25.0.2
+[ADB] Using adb from /Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb
+[debug] [ADB] Trying to find Pixel_2_XL_API_26 emulator
+[debug] [ADB] Getting connected emulators
+[debug] [ADB] Getting connected devices...
+[debug] [ADB] 1 device(s) connected
+[debug] [ADB] 1 emulator(s) connected
+[debug] [ADB] Sending telnet command to device: avd name
+[debug] [ADB] Getting running emulator port
+[debug] [ADB] Socket connection to device created
+[debug] [ADB] Socket connection to device ready
+[debug] [ADB] Telnet command got response: Pixel_2_XL_API_26
+[debug] [ADB] Found emulator Pixel_2_XL_API_26 in port 5554
+[debug] [ADB] Setting device id to emulator-5554
+[debug] [AndroidDriver] Not launching AVD because it is already running.
+[AndroidDriver] Using device: emulator-5554
+[debug] [ADB] Setting device id to emulator-5554
+[AndroidDriver] App file was not listed, instead we're going to run com.android.chrome directly on the device
+[debug] [AndroidDriver] Checking whether package is present on the device
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell pm list packages com.android.chrome'
+[AndroidDriver] Starting Android session
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 wait-for-device'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell echo ping'
+[AndroidDriver] setDeviceLanguageCountry requires language or country.
+[AndroidDriver] Got language: 'null' and country: 'null'
+[debug] [Logcat] Starting logcat capture
+[debug] [AndroidDriver] Pushing unlock helper app to device...
+[debug] [ADB] Getting install status for io.appium.unlock
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell pm list packages io.appium.unlock'
+[debug] [ADB] App is installed
+[debug] [ADB] Getting package info for 'io.appium.unlock'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys package io.appium.unlock'
+[ADB] Checking whether aapt is present
+[ADB] Using aapt from /Users/eugeniya.kruchok/Library/Android/sdk/build-tools/28.0.0/aapt
+[debug] [ADB] The installed 'io.appium.unlock' package does not require upgrade ('2.0.0' >= '2.0.0')
+[ADB] Getting device platform version
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.build.version.release'
+[debug] [ADB] Current device property 'ro.build.version.release': 8.0.0
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell wm size'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.product.model'
+[debug] [ADB] Current device property 'ro.product.model': Android SDK built for x86
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.product.manufacturer'
+[debug] [ADB] Current device property 'ro.product.manufacturer': Google
+[AndroidDriver] No app sent in, not parsing package/activity
+[debug] [AndroidDriver] No app capability. Assuming it is already on the device
+[debug] [ADB] Getting install status for com.android.chrome
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell pm list packages com.android.chrome'
+[debug] [ADB] App is installed
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am force-stop com.android.chrome'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell pm clear com.android.chrome'
+[debug] [AndroidDriver] Performed fast reset on the installed 'com.android.chrome' application (stop and clear)
+[debug] [AndroidBootstrap] Watching for bootstrap disconnect
+[debug] [ADB] Forwarding system: 4724 to device: 4724
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 forward tcp\:4724 tcp\:4724'
+[debug] [UiAutomator] Starting UiAutomator
+[debug] [UiAutomator] Moving to state 'starting'
+[debug] [UiAutomator] Parsing uiautomator jar
+[debug] [UiAutomator] Found jar name: 'AppiumBootstrap.jar'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 push /usr/local/lib/node_modules/appium/node_modules/appium-android-bootstrap/bootstrap/bin/AppiumBootstrap.jar /data/local/tmp/'
+[debug] [ADB] Attempting to kill all uiautomator processes
+[debug] [ADB] Getting all processes with uiautomator
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell ps'
+[ADB] No uiautomator process found to kill, continuing...
+[debug] [UiAutomator] Starting UIAutomator
+[debug] [ADB] Creating ADB subprocess with args: ["-P",5037,"-s","emulator-5554","shell","uiautomator","runtest","AppiumBootstrap.jar","-c","io.appium.android.bootstrap.Bootstrap","-e","pkg","com.android.chrome","-e","disableAndroidWatchers",false,"-e","acceptSslCerts",false]
+[debug] [UiAutomator] Moving to state 'online'
+[debug] [AndroidBootstrap] [BOOTSTRAP LOG] [debug] Loading json...
+[debug] [AndroidBootstrap] [BOOTSTRAP LOG] [debug] Registered crash watchers.
+[AndroidBootstrap] Android bootstrap socket is now connected
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys window'
+[debug] [AndroidBootstrap] [BOOTSTRAP LOG] [debug] Client connected
+[AndroidDriver] Screen already unlocked, doing nothing
+[AndroidDriver] Starting a chrome-based browser session
+[debug] [AndroidDriver] A port was not given, using random port: 8002
+[debug] [Chromedriver] Changed state to 'starting'
+[debug] [Chromedriver] The following Chromedriver executables were found:
+[debug] [Chromedriver]     /usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver (minimum Chrome version '65.0.3325')
+[debug] [ADB] Getting package info for 'com.android.chrome'
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys package com.android.chrome'
+[debug] [Chromedriver] Found Chrome bundle 'com.android.chrome' version '66.0.3359'
+[debug] [Chromedriver] Found 1 Chromedriver executable capable of automating Chrome '66.0.3359'.
+[debug] [Chromedriver] Choosing the most recent, '/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver'.
+[debug] [Chromedriver] If a specific version is required, specify it with the `chromedriverExecutable`desired capability.
+[Chromedriver] Set chromedriver binary as: /usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver
+[debug] [Chromedriver] Killing any old chromedrivers, running: pkill -15 -f "/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver.*--port=8002"
+[Chromedriver] No old chromedrivers seemed to exist
+[debug] [Chromedriver] Cleaning any old adb forwarded port socket connections
+[debug] [ADB] List forwarding ports
+[debug] [ADB] Running '/Users/eugeniya.kruchok/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 forward --list'
+[Chromedriver] Spawning chromedriver with: /usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/chromedriver/mac/chromedriver --url-base=wd/hub --port=8002 --adb-port=5037 --verbose
+[debug] [Chromedriver] Chromedriver version: '2.38.552518'
+[debug] [JSONWP Proxy] Proxying [GET /status] to [GET http://127.0.0.1:8002/wd/hub/status] with no body
+[debug] [JSONWP Proxy] Got response with status 200: "{\"sessionId\":\"\",\"status\":0,\"value\":{\"build\":{\"version\":\"alpha\"},\"os\":{\"arch\":\"x86_64\",\"name\":\"Mac OS X\",\"version\":\"10.13.5\"}}}"
+[debug] [JSONWP Proxy] Proxying [POST /session] to [POST http://127.0.0.1:8002/wd/hub/session] with body: {"desiredCapabilities":{"chromeOptions":{"androidPackage":"com.android.chrome","androidDeviceSerial":"emulator-5554"}}}
+[debug] [Chromedriver] Webview version: 'Chrome/66.0.3359.158'
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":0,"value":{"acceptInsecureCerts":false,"acceptSslCerts":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011)"},"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"hasTouchScreen":true,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"pageLoadStrategy":"normal","platform":"ANDROID","rotatable":false,"setWindowRect":false,"takesHeapSnapshot":true,"takesScreenshot":true,"unexpectedAlertBehaviour":"","version":"66.0.3359.158","webStorageEnabled":true}}
+[debug] [Chromedriver] Changed state to 'online'
+[Appium] New AndroidDriver session created successfully, session 8a7a99fa-5f49-4536-b380-a38221693898 added to master session list
+[debug] [BaseDriver] Event 'newSessionStarted' logged at 1529482377923 (11:12:57 GMT+0300 (EEST))
+[debug] [W3C] Responding to client with driver.createSession() result: {"capabilities":{"platform":"LINUX","webStorageEnabled":false,"takesScreenshot":true,"javascriptEnabled":true,"databaseEnabled":false,"networkConnectionEnabled":true,"locationContextEnabled":false,"warnings":{},"desired":{"browserName":"Chrome","platformName":"android","avd":"Pixel_2_XL_API_26","deviceName":"Pixel 2 XL","platformVersion":"8.0"},"browserName":"Chrome","platformName":"android","avd":"Pixel_2_XL_API_26","deviceName":"emulator-5554","platformVersion":"8.0.0","deviceUDID":"emulator-5554","deviceScreenSize":"1440x2880","deviceModel":"Android SDK built for x86","deviceManufacturer":"Google"}}
+[HTTP] <-- POST /wd/hub/session 200 11960 ms - 670
+[HTTP] 
+[HTTP] --> GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] {}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898] to [GET http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c] with body: {}
+[debug] [JSONWP Proxy] Got response with status 200: "{\"sessionId\":\"596442884e2d80399876d7974cddba0c\",\"status\":0,\"value\":{\"acceptInsecureCerts\":false,\"acceptSslCerts\":false,\"applicationCacheEnabled\":false,\"browserConnectionEnabled\":false,\"browserName\":\"chrome\",\"chrome\":{\"chromedriverVersion\":\"2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011)\"},\"cssSelectorsEnabled\":true,\"databaseEnabled\":false,\"handlesAlerts\":true,\"hasTouchScreen\":true,\"javascriptEnabled\":true,\"locationContextEnabled\":true,\"mobileEmulationEnabled\":false,\"nativeEvents\":true,\"pageLoadStrategy\":\"normal\",\"platform\":\"ANDROID\",\"rotatable\":false,\"setWindowRect\":false,\"takesHeapSnapshot\":true,\"takesScreenshot\":true,\"unexpectedAlertBehaviour\":\"\",\"version\":\"66.0.3359.158\",\"webStorageEnabled\":true}}"
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898 200 16 ms - 720
+[HTTP] 
+[HTTP] --> GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] {}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898] to [GET http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c] with body: {}
+[debug] [JSONWP Proxy] Got response with status 200: "{\"sessionId\":\"596442884e2d80399876d7974cddba0c\",\"status\":0,\"value\":{\"acceptInsecureCerts\":false,\"acceptSslCerts\":false,\"applicationCacheEnabled\":false,\"browserConnectionEnabled\":false,\"browserName\":\"chrome\",\"chrome\":{\"chromedriverVersion\":\"2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011)\"},\"cssSelectorsEnabled\":true,\"databaseEnabled\":false,\"handlesAlerts\":true,\"hasTouchScreen\":true,\"javascriptEnabled\":true,\"locationContextEnabled\":true,\"mobileEmulationEnabled\":false,\"nativeEvents\":true,\"pageLoadStrategy\":\"normal\",\"platform\":\"ANDROID\",\"rotatable\":false,\"setWindowRect\":false,\"takesHeapSnapshot\":true,\"takesScreenshot\":true,\"unexpectedAlertBehaviour\":\"\",\"version\":\"66.0.3359.158\",\"webStorageEnabled\":true}}"
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898 200 7 ms - 720
+[HTTP] 
+[HTTP] --> GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] {}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898] to [GET http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c] with body: {}
+[debug] [JSONWP Proxy] Got response with status 200: "{\"sessionId\":\"596442884e2d80399876d7974cddba0c\",\"status\":0,\"value\":{\"acceptInsecureCerts\":false,\"acceptSslCerts\":false,\"applicationCacheEnabled\":false,\"browserConnectionEnabled\":false,\"browserName\":\"chrome\",\"chrome\":{\"chromedriverVersion\":\"2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011)\"},\"cssSelectorsEnabled\":true,\"databaseEnabled\":false,\"handlesAlerts\":true,\"hasTouchScreen\":true,\"javascriptEnabled\":true,\"locationContextEnabled\":true,\"mobileEmulationEnabled\":false,\"nativeEvents\":true,\"pageLoadStrategy\":\"normal\",\"platform\":\"ANDROID\",\"rotatable\":false,\"setWindowRect\":false,\"takesHeapSnapshot\":true,\"takesScreenshot\":true,\"unexpectedAlertBehaviour\":\"\",\"version\":\"66.0.3359.158\",\"webStorageEnabled\":true}}"
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- GET /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898 200 6 ms - 720
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/timeouts
+[HTTP] {"implicit":20000}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/timeouts] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/timeouts] with body: {"implicit":20000}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":13,"value":{"message":"unknown error: 'ms' must be a double\n  (Session info: chrome=66.0.3359.158)\n  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)"}}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/timeouts 200 8 ms - 282
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/window/fullscreen
+[HTTP] {}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/window/fullscreen] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/window/fullscreen] with body: {}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":13,"value":{"message":"unknown error: operation is unsupported on Android\n  (Session info: chrome=66.0.3359.158)\n  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)"}}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/window/fullscreen 200 12 ms - 296
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url
+[HTTP] {"url":"http://192.168.1.74:3000"}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/url] with body: {"url":"http://192.168.1.74:3000"}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":0,"value":null}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url 200 4004 ms - 76
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url
+[HTTP] {"url":"http://192.168.1.74:3000signup/"}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/url] with body: {"url":"http://192.168.1.74:3000signup/"}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":13,"value":{"message":"unknown error: unhandled inspector error: {\"code\":-32000,\"message\":\"Cannot navigate to invalid URL\"}\n  (Session info: chrome=66.0.3359.158)\n  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)"}}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/url 200 14 ms - 352
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element
+[HTTP] {"using":"css selector","value":"input[type=\"email\"]"}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/element] with body: {"using":"css selector","value":"input[type=\"email\"]"}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":7,"value":{"message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"input[type=\"email\"]\"}\n  (Session info: chrome=66.0.3359.158)\n  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)"}}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element 200 27 ms - 356
+[HTTP] 
+[HTTP] --> POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element
+[HTTP] {"using":"css selector","value":"input[type=\"email\"]"}
+[W3C] Driver proxy active, passing request on via HTTP proxy
+[debug] [JSONWP Proxy] Proxying [POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element] to [POST http://127.0.0.1:8002/wd/hub/session/596442884e2d80399876d7974cddba0c/element] with body: {"using":"css selector","value":"input[type=\"email\"]"}
+[debug] [JSONWP Proxy] Got response with status 200: {"sessionId":"596442884e2d80399876d7974cddba0c","status":7,"value":{"message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"input[type=\"email\"]\"}\n  (Session info: chrome=66.0.3359.158)\n  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.5 x86_64)"}}
+[JSONWP Proxy] Replacing sessionId 596442884e2d80399876d7974cddba0c with 8a7a99fa-5f49-4536-b380-a38221693898
+[HTTP] <-- POST /wd/hub/session/8a7a99fa-5f49-4536-b380-a38221693898/element 200 19 ms - 356
+[HTTP] 
+]]></system-out>
+    <system-err><![CDATA[Jun 20, 2018 11:12:57 AM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFO: Detected dialect: W3C
+]]></system-err>
+  </testcase>
+</testsuite>

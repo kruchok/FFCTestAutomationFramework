@@ -1,7 +1,5 @@
 package driver;
 
-import infrastructure.Browser;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -9,15 +7,12 @@ import org.openqa.selenium.WebDriver;
  */
 public class WebDriverFactory {
 
-    public static WebDriver getDriver(String browser) {
-        if (browser.equalsIgnoreCase("chrome")) {
-            ChromeDriverFactory factory = new ChromeDriverFactory();
-            return factory.factory();
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            FireFoxDriverFactory factory = new FireFoxDriverFactory();
-            return factory.factory();
+    public static WebDriver getDriver() {
+        String platform = System.getProperty("platform");
+        if (platform == null) {
+            return new DesktopFactory().factory();
         } else {
-            return null;
+            return new MobileFactory().factory();
         }
     }
 }

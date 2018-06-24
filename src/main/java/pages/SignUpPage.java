@@ -1,7 +1,7 @@
 package pages;
 
 import infrastructure.Browser;
-import infrastructure.Property;
+import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +15,7 @@ public class SignUpPage extends SignPage implements SignUp {
 
     public SignUpPage() {super();}
 
-    private static String url = baseUrl + Property.getProperty("signUp");
+    private static String url = baseUrl + Config.getProperty("signUp");
 
 //    @FindBy(css = "input[type=\"email\"]")
 //    private WebElement emailField;
@@ -43,7 +43,7 @@ public class SignUpPage extends SignPage implements SignUp {
     public void signUp(String email) {
 //        String testUrl = Browser.driver.getCurrentUrl();
         open();
-        signUpOrSignIn(email);
+        signIn(email);
     }
 
 
