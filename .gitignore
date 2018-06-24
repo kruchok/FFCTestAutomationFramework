@@ -1,9 +1,9 @@
 # Compiled class file
 *.class
 
-.allure-report
-.allure-results
-.target
+allure-report/
+allure-results/
+target/
 
 # Log file
 *.log
