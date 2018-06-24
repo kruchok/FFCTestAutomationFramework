@@ -53,11 +53,8 @@ public class SignPage extends PageObject {
 
     @Step("Sign in user with {email} email")
     public void signIn(String email) {
-        SignPage signPage = new SignPage();
-
-        signPage.enterEmail(email).clickGetLinkButton();
+        this.enterEmail(email).clickGetLinkButton();
         MailHog mailHog = new MailHog();
-
         mailHog.open();
         mailHog.followLinkToSignIn();
     }

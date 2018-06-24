@@ -59,7 +59,7 @@ public class MailHog extends PageObject {
         deleteAllButton.click();
         WebElement confirmDeleteButton = Browser.waitForElement(10).until(
                 ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector("#confirm-delete-all button[ng-click=\"deleteAllConfirm()\"]")
+                        By.cssSelector("#confirm-delete-all .btn.btn-danger")
                 )
         );
         confirmDeleteButton.click();

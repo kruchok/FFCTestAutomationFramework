@@ -41,9 +41,8 @@ public class SignUpPage extends SignPage implements SignUp {
 
     @Step("Sign up new user with {email} email")
     public void signUp(String email) {
-//        String testUrl = Browser.driver.getCurrentUrl();
-        open();
-        signIn(email);
+        this.open();
+        this.signIn(email);
     }
 
 

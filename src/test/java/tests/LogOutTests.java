@@ -48,6 +48,7 @@ class LogOutTests {
     @AfterAll
     static void afterClass() {
         SignInPage signInPage = new SignInPage();
+        signInPage.open();
         signInPage.signIn(email);
         signInPage.cleanUp();
         new MailHog().cleanUp();

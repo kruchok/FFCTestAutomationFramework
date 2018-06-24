@@ -32,7 +32,7 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(css = "button.btn-danger:nth-of-type(2)")
     private WebElement deleteAccountButton;
 
-    @FindBy(xpath = "//button[contains(text(), 'Delete everything related to this account')]")
+    @FindBy(css = "[role=\"document\"] .btn.btn-lg.btn-danger.btn-block")
     private WebElement confirmDeleteButton;
 
     @FindBy(css = "a[href=\"/signout\"]")
