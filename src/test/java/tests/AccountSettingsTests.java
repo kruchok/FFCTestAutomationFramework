@@ -42,7 +42,7 @@ class AccountSettingsTests {
     }
 
     @Test
-    @DisplayName("User can change Username")
+    @DisplayName("User can change username")
     @Severity(SeverityLevel.TRIVIAL)
     void canChangeUsername() {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
@@ -93,12 +93,9 @@ class AccountSettingsTests {
 
         settingsPage.saveInternetPresenceForm();
 
-//        Assert.assertTrue("'Internet Presence' form isn't saved",
-//                settingsPage.isInternetPresenceSaved(github, linkedin, twitter, website));
-
         Assertions.assertAll("'Internet Presence' form isn't saved", () -> {
                     Assertions.assertTrue(settingsPage.isMessageAppears("We have successfully updated your account."));
-                    Assertions.assertTrue(settingsPage.isGithubSaved("hhfhfha"), "GitHub link isn't saved");
+                    Assertions.assertTrue(settingsPage.isGithubSaved(github), "GitHub link isn't saved");
                     Assertions.assertTrue(settingsPage.isLinkedinSaved(linkedin));
                     Assertions.assertTrue(settingsPage.isTwitterSaved(twitter));
                     Assertions.assertTrue(settingsPage.isWebsiteSaved(website));
