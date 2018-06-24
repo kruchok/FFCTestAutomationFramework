@@ -1,6 +1,10 @@
 # Compiled class file
 *.class
 
+.allure-report
+.allure-results
+.target
+
 # Log file
 *.log
 
@@ -33,6 +37,7 @@ hs_err_pid*
 .idea/dictionaries
 
 # Sensitive or high-churn files:
+.idea
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.xml
