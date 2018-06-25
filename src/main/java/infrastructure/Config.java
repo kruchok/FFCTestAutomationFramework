@@ -13,7 +13,7 @@ public class Config {
 
     private static Properties properties;
 
-    private static File propertiesFile = new File("./src/main/resources/environment.properties");
+    private static File propertiesFile = new File("./src/main/resources/freeCodeCamp.properties");
 
     public static String getProperty(String property) {
         return properties.getProperty(property);

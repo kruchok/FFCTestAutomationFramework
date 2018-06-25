@@ -1,6 +1,6 @@
 package driver;
 
-import infrastructure.Browser;
+import infrastructure.Driver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebDriver;
@@ -57,7 +57,7 @@ public class MobileFactory implements Factory {
                 device = "Pixel 2 XL";
                 avd = "Pixel_2_XL_API_26";
             } else {
-                Browser.logger.debug("There is no emulator for specified Android device");
+                Driver.logger.debug("There is no emulator for specified Android device");
             }
         } else if (platform.equalsIgnoreCase("ios")) {
             if (platformVersion.equals("11.0")) {
@@ -67,7 +67,7 @@ public class MobileFactory implements Factory {
             } else if (platformVersion.equals("9.0")) {
                 device = "iPhone SE";
             } else {
-                Browser.logger.debug("There is no emulator for specified iOS device");
+                Driver.logger.debug("There is no emulator for specified iOS device");
             }
         }
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device);

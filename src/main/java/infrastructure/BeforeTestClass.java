@@ -14,11 +14,11 @@ public class BeforeTestClass implements BeforeAllCallback {
     @Override
     public void beforeAll(ExtensionContext containerExtensionContext) throws Exception {
         Config.initProperties();
-        Browser.setDriver();
+        Driver.setDriver();
         PageObject.initBaseUrl();
-        Browser.driver.get(PageObject.baseUrl);
+        Driver.driver.get(PageObject.baseUrl);
         AllureEnvironment allureEnvironment = new AllureEnvironment();
         CsvDataProvider.init();
-        Browser.logger = LogManager.getLogger();
+        Driver.logger = LogManager.getLogger();
     }
 }

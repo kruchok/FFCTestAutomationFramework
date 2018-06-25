@@ -27,7 +27,7 @@ public class AllureReportExtension implements AfterTestExecutionCallback {
 
     @Attachment("{name} screenshot")
     byte[] makeScreenshotOnFailure(String name) {
-        return ((TakesScreenshot) Browser.driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) Driver.driver).getScreenshotAs(OutputType.BYTES);
     }
 
 }

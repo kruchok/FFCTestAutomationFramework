@@ -1,7 +1,6 @@
 package tests;
 
 import infrastructure.*;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
@@ -41,7 +40,7 @@ class LogOutTests {
         AccountSettingsPage settingsPage = new AccountSettingsPage();
         settingsPage.clickSignOutButton();
 
-        Assertions.assertTrue(new HomePage().isAt(), "Current URL is " + Browser.driver.getCurrentUrl() +
+        Assertions.assertTrue(new HomePage().isAt(), "Current URL is " + Driver.driver.getCurrentUrl() +
                 " while should be " + HomePage.getUrl());
     }
 

@@ -29,8 +29,8 @@ public class MailHog extends PageObject {
 
     @Step("Open email page on MailHog")
     public void open() {
-        ((JavascriptExecutor) Browser.driver).executeScript("window.open('" + url + "');");
-        Browser.switchToLastWindow();
+        ((JavascriptExecutor) Driver.driver).executeScript("window.open('" + url + "');");
+        Driver.switchToLastWindow();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -47,7 +47,7 @@ public class MailHog extends PageObject {
         } else {
             throw new NoSuchElementException("Email address is wrong");
         }
-        Browser.switchToLastWindow();
+        Driver.switchToLastWindow();
     }
 
     /**
@@ -57,7 +57,7 @@ public class MailHog extends PageObject {
     public void cleanUp() {
         open();
         deleteAllButton.click();
-        WebElement confirmDeleteButton = Browser.waitForElement(10).until(
+        WebElement confirmDeleteButton = Driver.waitForElement(10).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         By.cssSelector("#confirm-delete-all .btn.btn-danger")
                 )
@@ -70,7 +70,7 @@ public class MailHog extends PageObject {
      */
     public void openMail() {
         mail.click();
-        Browser.defaultWait();
+        Driver.defaultWait();
     }
 
     /**

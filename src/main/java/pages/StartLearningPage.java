@@ -1,6 +1,6 @@
 package pages;
 
-import infrastructure.Browser;
+import infrastructure.Driver;
 import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +16,7 @@ public class StartLearningPage extends PageObject {
 
     @Step("Verify that current page is Start Learning page")
     public boolean isAt() {
-        return Browser.waitForElement(10).until(ExpectedConditions.urlToBe(url));
+        return Driver.waitForElement(10).until(ExpectedConditions.urlToBe(url));
     }
 
     public static String getUrl() {

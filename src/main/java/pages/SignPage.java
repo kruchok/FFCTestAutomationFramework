@@ -13,16 +13,9 @@ import pages.navigation.HeaderNavigation;
  */
 public class SignPage extends PageObject {
 
-    public SignPage() { super(); }
-
     private static String email;
 
-
-    /**
-     * Делать общий класс родитель не абстрактный
-     * а абстракные методы добавить в интерфейсы
-     */
-
+    public SignPage() { super(); }
 
     @FindBy(css = "input[type=\"email\"]")
     private WebElement emailField;

@@ -7,7 +7,7 @@ import java.util.Properties;
  * Created by eugeniya.kruchok on 05.03.2018.
  */
 public class AllureEnvironment {
-    String path = "./allure-results/environment.properties";
+    String path = "./allure-results/freeCodeCamp.properties";
 
     Properties property = new Properties();
     OutputStream stream;

@@ -1,6 +1,6 @@
 package pages;
 
-import infrastructure.Browser;
+import infrastructure.Driver;
 import infrastructure.Config;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,7 +13,7 @@ public abstract class PageObject {
     public static String baseUrl;
 
     public PageObject() {
-        PageFactory.initElements(Browser.driver, this);
+        PageFactory.initElements(Driver.driver, this);
     }
 
     public static void initBaseUrl() {
@@ -28,7 +28,7 @@ public abstract class PageObject {
     }
 
     public void close() {
-        Browser.driver.close();
+        Driver.driver.close();
     }
 
     public static String getRelativeUrl(String pageName) {
@@ -36,7 +36,6 @@ public abstract class PageObject {
     }
 
     public boolean isCurrentUrl(String url) {
-        return Browser.waitForElement(20).until(ExpectedConditions.urlToBe(url));
+        return Driver.waitForElement(20).until(ExpectedConditions.urlToBe(url));
     }
-
 }

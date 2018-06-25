@@ -1,6 +1,6 @@
 package pages.navigation;
 
-import infrastructure.Browser;
+import infrastructure.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +19,7 @@ public class HeaderNavigation extends PageObject {
 
     @Step("Open Account Settings page")
     public void openAccountSettings() {
-        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(settingsLink));
+        Driver.waitForElement(10).until(ExpectedConditions.visibilityOf(settingsLink));
         settingsLink.click();
     }
 }

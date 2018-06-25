@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 public class AfterTestClass implements AfterAllCallback {
 
     @Override
-    public void afterAll(ExtensionContext containerExtensionContext) throws Exception {
-//        Browser.driver.quit();
+    public void afterAll(ExtensionContext containerExtensionContext) {
+        Driver.driver.quit();
     }
 }

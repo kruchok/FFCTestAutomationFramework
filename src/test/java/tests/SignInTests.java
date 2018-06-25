@@ -1,7 +1,6 @@
 package tests;
 
 import infrastructure.*;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
@@ -43,7 +42,7 @@ class SignInTests {
         mailHog.followLinkToSignIn();
 
         Assertions.assertAll("User isn't signed in", () -> {
-            Assertions.assertTrue(new StartLearningPage().isAt(), "Current URL is " + Browser.driver.getCurrentUrl() +
+            Assertions.assertTrue(new StartLearningPage().isAt(), "Current URL is " + Driver.driver.getCurrentUrl() +
                     " while should be " + StartLearningPage.getUrl());
             Assertions.assertTrue(new AccountSettingsPage().isSignedIn(), "User is't signed in");
         });

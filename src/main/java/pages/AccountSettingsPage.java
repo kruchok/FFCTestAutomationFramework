@@ -1,6 +1,6 @@
 package pages;
 
-import infrastructure.Browser;
+import infrastructure.Driver;
 import infrastructure.Config;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -18,7 +18,7 @@ public class AccountSettingsPage extends PageObject{
 
     public AccountSettingsPage() {
         super();
-        Browser.logger.debug(this.getClass().getSimpleName()
+        Driver.logger.debug(this.getClass().getSimpleName()
                 + " is opened at "
                 + CurrentTime.getCurrentTime()
         );
@@ -112,8 +112,8 @@ public class AccountSettingsPage extends PageObject{
 
     @Step("Open Account Settings page")
     public void open() {
-        Browser.driver.get(url);
-        Browser.logger.debug(this.getClass().getSimpleName()
+        Driver.driver.get(url);
+        Driver.logger.debug(this.getClass().getSimpleName()
                 + " is opened at "
                 + CurrentTime.getCurrentTime());
     }
@@ -188,9 +188,9 @@ public class AccountSettingsPage extends PageObject{
      */
     @Step("Delete Account")
     public void deleteAccount() {
-        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(deleteAccountButton));
+        Driver.waitForElement(10).until(ExpectedConditions.visibilityOf(deleteAccountButton));
         deleteAccountButton.click();
-        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(confirmDeleteButton));
+        Driver.waitForElement(10).until(ExpectedConditions.visibilityOf(confirmDeleteButton));
         confirmDeleteButton.click();
     }
 
@@ -206,7 +206,7 @@ public class AccountSettingsPage extends PageObject{
     public AccountSettingsPage enterEmail(String changedEmail) {
         emailField.clear();
         emailField.sendKeys(changedEmail);
-        Browser.waitForElement(10).until(ExpectedConditions.attributeToBe(
+        Driver.waitForElement(10).until(ExpectedConditions.attributeToBe(
                 emailField, "value", changedEmail)
         );
         return this;
@@ -216,7 +216,7 @@ public class AccountSettingsPage extends PageObject{
     public AccountSettingsPage enterConfirmEmail(String confirmEmail) {
         confirmEmailField.clear();
         confirmEmailField.sendKeys(confirmEmail);
-        Browser.waitForElement(10).until(ExpectedConditions.attributeToBe(
+        Driver.waitForElement(10).until(ExpectedConditions.attributeToBe(
                 confirmEmailField, "value", confirmEmail)
         );
         return this;
@@ -224,13 +224,13 @@ public class AccountSettingsPage extends PageObject{
 
     @Step("Click 'Save' button")
     public void saveEmailForm() {
-        Browser.waitForElement(10).until(ExpectedConditions.visibilityOf(saveChangeEmailForm));
+        Driver.waitForElement(10).until(ExpectedConditions.visibilityOf(saveChangeEmailForm));
         saveChangeEmailForm.click();
     }
 
     @Step("Verify that email is changed to {changedEmail}")
     public boolean isEmailChanged(String changedEmail) {
-        Browser.refreshPage();
+        Driver.refreshPage();
         return verifyEmailAddressMessage.getText().contains("A change of email adress has not been verified.") ||
                 emailField.getAttribute("value").equals(changedEmail);
     }
@@ -295,8 +295,8 @@ public class AccountSettingsPage extends PageObject{
      */
     @Step("Verify that right user is signed in")
     public boolean isSignedIn() {
-        if (!(Browser.driver.getCurrentUrl().equals(url))) open();
-        WebElement email = Browser.driver.findElement(By.id("email"));
+        if (!(Driver.driver.getCurrentUrl().equals(url))) open();
+        WebElement email = Driver.driver.findElement(By.id("email"));
         return email.getAttribute("value").equals(SignUpPage.getEmail());
     }
 
@@ -309,14 +309,14 @@ public class AccountSettingsPage extends PageObject{
     }
 
     private void save(WebElement button) {
-        Browser.waitForElement(10).until(ExpectedConditions.elementToBeClickable(button));
+        Driver.waitForElement(10).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
 
     private String getSuccessMessage() {
-        Browser.waitForElement(20).until(ExpectedConditions.visibilityOf(message));
+        Driver.waitForElement(20).until(ExpectedConditions.visibilityOf(message));
         String messageText = message.getText();
-        Browser.refreshPage();
+        Driver.refreshPage();
         return messageText;
     }
 
