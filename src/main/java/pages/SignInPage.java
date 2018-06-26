@@ -16,7 +16,7 @@ public class SignInPage extends SignPage {
         super();
     }
 
-    private static String url = baseUrl + Config.getProperty("signIn");
+    private static String url = Driver.baseUrl + Config.getProperty("signIn");
 
     @FindBy(id = "flash-content")
     private WebElement successText;

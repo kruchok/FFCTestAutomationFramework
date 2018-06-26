@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class SignUpPage extends SignPage {
 
-    private static String url = baseUrl + Config.getProperty("signUp");
+    private static String url = Driver.baseUrl + Config.getProperty("signUp");
 
     public SignUpPage() {super();}
 

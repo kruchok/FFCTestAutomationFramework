@@ -13,7 +13,7 @@ public class HomePage extends PageObject {
 
     public HomePage() {super();}
 
-    protected static String url = baseUrl;
+    protected static String url = Driver.baseUrl;
 
     @FindBy(css = "a[href=\"/signin\"].btn-block")
     private WebElement sighUpLink;
@@ -27,7 +27,7 @@ public class HomePage extends PageObject {
 
     @Step("Open Homepage by URL")
     public void open() {
-        Driver.driver.get(baseUrl);
+        Driver.driver.get(Driver.baseUrl);
         Driver.logger.debug(this.getClass().getSimpleName() + " is opened at" + CurrentTime.getCurrentTime());
     }
 
@@ -37,8 +37,8 @@ public class HomePage extends PageObject {
     }
 
     @Step("Verify that Home page is opened")
-    public boolean isAt() {
-        return isCurrentUrl(baseUrl);
+    public static boolean isAt() {
+        return Driver.isCurrentUrl(Driver.baseUrl);
     }
 
     public static String getUrl() {

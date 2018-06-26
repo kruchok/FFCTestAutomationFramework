@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Driver {
     public static WebDriver driver;
     public static WebDriverWait wait;
     public static ArrayList<String> windows;
+    public static String baseUrl;
     private static int defaultWait = 20;
     public static Logger logger;
 
@@ -27,6 +29,10 @@ public class Driver {
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
             driver.manage().window().fullscreen();
         }
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public static void wait(int seconds) {
@@ -95,5 +101,24 @@ public class Driver {
         } finally {
             Driver.defaultWait();
         }
+    }
+
+    public static void initBaseUrl() {
+        String environment = System.getProperty("env");
+        if (environment.equalsIgnoreCase("localhost")) {
+            baseUrl = Config.getProperty("localhost");
+        } else if (environment.equalsIgnoreCase("demo")) {
+            baseUrl = Config.getProperty("demo");
+        } else if (environment.equalsIgnoreCase("external")) {
+            baseUrl = Config.getProperty("external");
+        }
+    }
+
+    public static String getRelativeUrl(String pageName) {
+        return Config.getProperty(pageName);
+    }
+
+    public static boolean isCurrentUrl(String url) {
+        return waitForElement(20).until(ExpectedConditions.urlToBe(url));
     }
 }

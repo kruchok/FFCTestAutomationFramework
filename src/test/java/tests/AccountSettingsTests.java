@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.AccountSettingsPage;
+import pages.SignInPage;
 import pages.SignUpPage;
 import pages.navigation.HeaderNavigation;
 import utils.StringGenerator;
@@ -105,7 +106,7 @@ class AccountSettingsTests {
 
     @AfterAll
     static void cleanUp() {
-        new SignUpPage().cleanUp();
+        new SignInPage().cleanUp();
         new MailHog().cleanUp();
     }
 }

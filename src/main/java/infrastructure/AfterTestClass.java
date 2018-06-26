@@ -10,6 +10,6 @@ public class AfterTestClass implements AfterAllCallback {
 
     @Override
     public void afterAll(ExtensionContext containerExtensionContext) {
-        Driver.driver.quit();
+//        Driver.driver.quit();
     }
 }

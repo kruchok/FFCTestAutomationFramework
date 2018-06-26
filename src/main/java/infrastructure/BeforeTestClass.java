@@ -3,7 +3,6 @@ package infrastructure;
 import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import pages.PageObject;
 
 
 /**
@@ -15,8 +14,8 @@ public class BeforeTestClass implements BeforeAllCallback {
     public void beforeAll(ExtensionContext containerExtensionContext) throws Exception {
         Config.initProperties();
         Driver.setDriver();
-        PageObject.initBaseUrl();
-        Driver.driver.get(PageObject.baseUrl);
+        Driver.initBaseUrl();
+        Driver.driver.get(Driver.baseUrl);
         AllureEnvironment allureEnvironment = new AllureEnvironment();
         CsvDataProvider.init();
         Driver.logger = LogManager.getLogger();

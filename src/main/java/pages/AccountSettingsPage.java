@@ -24,7 +24,7 @@ public class AccountSettingsPage extends PageObject{
         );
     }
 
-    private static String url = baseUrl + Config.getProperty("accountSettings");
+    private static String url = Driver.baseUrl + Config.getProperty("accountSettings");
 
     /**
      * 'Delete account' flow.
