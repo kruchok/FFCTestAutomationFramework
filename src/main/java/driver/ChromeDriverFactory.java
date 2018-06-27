@@ -15,9 +15,9 @@ public class ChromeDriverFactory implements DriverFactory {
 
         ChromeDriverManager.getInstance().setup();
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         return new ChromeDriver();
     }
 }
