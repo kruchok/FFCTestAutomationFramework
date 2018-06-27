@@ -101,7 +101,7 @@ public class Driver {
     }
 
     public static void initBaseUrl() {
-        String environment = System.getProperty("env");
+        String environment = System.getProperty("env", "localhost");
         if (environment.equalsIgnoreCase("localhost")) {
             baseUrl = Config.getProperty("localhost");
         } else if (environment.equalsIgnoreCase("demo")) {

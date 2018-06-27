@@ -19,10 +19,10 @@ public class MailHog extends PageObject {
     private static String url;
 
     public MailHog() {
-        if ((System.getProperty("env").equalsIgnoreCase("external"))) {
-            url = Config.getProperty("mailhogExternal");
-        } else {
+        if ((System.getProperty("env", "localhost").equalsIgnoreCase("localhost"))) {
             url = Config.getProperty("mailhog");
+        } else {
+            url = Config.getProperty("mailhogExternal");
         }
     }
 
