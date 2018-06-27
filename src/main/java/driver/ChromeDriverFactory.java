@@ -18,6 +18,6 @@ public class ChromeDriverFactory implements DriverFactory {
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        return new ChromeDriver();
+        return new ChromeDriver(options);
     }
 }
