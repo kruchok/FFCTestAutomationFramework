@@ -16,7 +16,15 @@ import java.util.NoSuchElementException;
  */
 public class MailHog extends PageObject {
 
-    private static String url = Config.getProperty("mailhog");
+    private static String url;
+
+    public MailHog() {
+        if ((System.getProperty("env").equalsIgnoreCase("external"))) {
+            url = Config.getProperty("mailhogExternal");
+        } else {
+            url = Config.getProperty("mailhog");
+        }
+    }
 
     @FindBy(css = "div.msglist-message")
     private WebElement mail;
@@ -29,6 +37,7 @@ public class MailHog extends PageObject {
 
     @Step("Open email page on MailHog")
     public void open() {
+
         ((JavascriptExecutor) Driver.driver).executeScript("window.open('" + url + "');");
         Driver.switchToLastWindow();
         try {

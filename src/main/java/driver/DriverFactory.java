@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by eugeniya.kruchok on 26.02.2018.
  */
-public interface Factory {
+public interface DriverFactory {
 
-    WebDriver factory();
+    WebDriver createDriver();
 }

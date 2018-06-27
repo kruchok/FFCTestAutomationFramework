@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
  */
 public class WebDriverFactory {
 
-    public static WebDriver getDriver() {
+    public static WebDriver createDriver() {
         String platform = System.getProperty("platform");
         if (platform == null) {
-            return new DesktopFactory().factory();
+            return new DesktopFactory().createDriver();
         } else {
-            return new MobileFactory().factory();
+            return new MobileFactory().createDriver();
         }
     }
 }

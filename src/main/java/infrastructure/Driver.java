@@ -22,7 +22,7 @@ public class Driver {
 
     public static void setDriver() {
         if (driver == null) {
-            driver = WebDriverFactory.getDriver();
+            driver = WebDriverFactory.createDriver();
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
             driver.manage().window().setSize(new Dimension(1024, 768));
         }

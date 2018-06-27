@@ -5,7 +5,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class AndroidDriverFactory implements Factory {
+public class AndroidDriverFactory implements DriverFactory {
     AppiumDriverLocalService service;
     DesiredCapabilities capabilities;
 
@@ -15,7 +15,7 @@ public class AndroidDriverFactory implements Factory {
     }
 
     @Override
-    public WebDriver factory() {
+    public WebDriver createDriver() {
 
         return new AndroidDriver<>(service.getUrl(), capabilities);
     }

@@ -2,18 +2,17 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 
-public class DesktopFactory implements Factory {
+public class DesktopFactory implements DriverFactory {
 
     @Override
-    public WebDriver factory() {
-        String browser = System.getProperty("browser");
-        if (browser.equalsIgnoreCase("chrome")) {
-            ChromeDriverFactory factory = new ChromeDriverFactory();
-            return factory.factory();
-        } else if (browser.equalsIgnoreCase("firefox")) {
+    public WebDriver createDriver() {
+        String browser = System.getProperty("browser", "chrome");
+        if (browser.equalsIgnoreCase("firefox")) {
             FireFoxDriverFactory factory = new FireFoxDriverFactory();
-            return factory.factory();
+            return factory.createDriver();
+        } else {
+            ChromeDriverFactory factory = new ChromeDriverFactory();
+            return factory.createDriver();
         }
-        return null;
     }
 }

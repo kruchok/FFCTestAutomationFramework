@@ -6,13 +6,13 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class MobileFactory implements Factory {
+public class MobileFactory implements DriverFactory {
     private AppiumDriverLocalService service;
     private DesiredCapabilities capabilities;
     public String platform = System.getProperty("platform");
 
     @Override
-    public WebDriver factory() {
+    public WebDriver createDriver() {
         service = AppiumDriverLocalService.buildDefaultService();
         service.start();
 
@@ -20,10 +20,10 @@ public class MobileFactory implements Factory {
 
         if (platform.equalsIgnoreCase("android")) {
             AndroidDriverFactory androidDriverFactory = new AndroidDriverFactory(service, capabilities);
-            return androidDriverFactory.factory();
+            return androidDriverFactory.createDriver();
         } else if (platform.equalsIgnoreCase("ios")) {
             IOSDriverFactory iosDriverFactory = new IOSDriverFactory(service, capabilities);
-            return iosDriverFactory.factory();
+            return iosDriverFactory.createDriver();
         }
         return null;
     }
