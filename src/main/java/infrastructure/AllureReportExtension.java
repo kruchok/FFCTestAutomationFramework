@@ -19,7 +19,7 @@ public class AllureReportExtension implements AfterTestExecutionCallback {
         Optional<Throwable> optional;
         if ((optional = testExtensionContext.getExecutionException()).isPresent()) {
             Throwable throwable = optional.get();
-            if (throwable instanceof AssertionError) {
+            if (throwable instanceof AssertionError || throwable instanceof RuntimeException) {
                 makeScreenshotOnFailure(testExtensionContext.getDisplayName() + CurrentTime.getCurrentTime());
             }
         }
