@@ -2,10 +2,7 @@ package infrastructure;
 
 import driver.WebDriverFactory;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,7 +24,7 @@ public class Driver {
         if (driver == null) {
             driver = WebDriverFactory.getDriver();
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
-            driver.manage().window().fullscreen();
+            driver.manage().window().setSize(new Dimension(1024, 768));
         }
     }
 
