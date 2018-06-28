@@ -3,26 +3,15 @@ package tests;
 import infrastructure.AfterTestClass;
 import infrastructure.AllureReportExtension;
 import infrastructure.BeforeTestClass;
-import infrastructure.MailHog;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.LessonPage;
-import pages.SignInPage;
-import pages.SignUpPage;
-import utils.StringGenerator;
 
 @ExtendWith({BeforeTestClass.class, AfterTestClass.class})
 @ExtendWith(AllureReportExtension.class)
 class LessonsTests {
-
-    private static String email = StringGenerator.generateEmail();
-
-    @BeforeAll
-    static void preconditionSetUp() {
-        new SignUpPage().signUp(email);
-    }
 
     @Test
     @DisplayName("User can navigate throughout lessons")
@@ -43,11 +32,5 @@ class LessonsTests {
         lessonPage.typeInEditor("<h1>" + text + "</h1>");
         lessonPage.runTests();
         Assertions.assertTrue(lessonPage.isSuccessModal(), "There is no Success modal");
-    }
-
-    @AfterAll
-    static void afterClass() {
-        new SignInPage().cleanUp();
-        new MailHog().cleanUp();
     }
 }

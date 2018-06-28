@@ -24,7 +24,7 @@ public class Driver {
         if (driver == null) {
             driver = WebDriverFactory.createDriver();
             driver.manage().timeouts().implicitlyWait(defaultWait, TimeUnit.SECONDS);
-            driver.manage().window().setSize(new Dimension(1024, 768));
+            driver.manage().window().fullscreen();
         }
     }
 
