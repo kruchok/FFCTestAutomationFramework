@@ -1,0 +1,145 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "tests.LessonsTests",
+    "children" : [ {
+      "name" : "User can run tests and get success message",
+      "uid" : "319f58bb45ef35c2",
+      "parentUid" : "27a318dd8e342b93d093b8b3d1efc73d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181226045,
+        "stop" : 1530181232189,
+        "duration" : 6144
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "User can navigate throughout lessons",
+      "uid" : "441190fc0ec4cf52",
+      "parentUid" : "27a318dd8e342b93d093b8b3d1efc73d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181232428,
+        "stop" : 1530181241155,
+        "duration" : 8727
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "27a318dd8e342b93d093b8b3d1efc73d"
+  }, {
+    "name" : "tests.LogOutTests",
+    "children" : [ {
+      "name" : "User can log out",
+      "uid" : "d5d665f4101213f8",
+      "parentUid" : "e29e935984302b52c66a9470ce90ca35",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181245298,
+        "stop" : 1530181248514,
+        "duration" : 3216
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "e29e935984302b52c66a9470ce90ca35"
+  }, {
+    "name" : "tests.SignInTests",
+    "children" : [ {
+      "name" : "User can sign in",
+      "uid" : "56826a26a943d29",
+      "parentUid" : "93128d9093d90553573e9543cdfe2c78",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181268859,
+        "stop" : 1530181277277,
+        "duration" : 8418
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "93128d9093d90553573e9543cdfe2c78"
+  }, {
+    "name" : "tests.AccountSettingsTests",
+    "children" : [ {
+      "name" : "User can change language",
+      "uid" : "caf5be3f07d710e7",
+      "parentUid" : "5d90bdf65c04c4822632ed2f086f6bd3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181287373,
+        "stop" : 1530181293406,
+        "duration" : 6033
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "User can change username",
+      "uid" : "1f2b05b4adbff216",
+      "parentUid" : "5d90bdf65c04c4822632ed2f086f6bd3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181293408,
+        "stop" : 1530181297264,
+        "duration" : 3856
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "User can change email",
+      "uid" : "be2233d2bf2600c2",
+      "parentUid" : "5d90bdf65c04c4822632ed2f086f6bd3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181297267,
+        "stop" : 1530181301567,
+        "duration" : 4300
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "User can edit 'Internet Presence' form",
+      "uid" : "b25983adb67df3b",
+      "parentUid" : "5d90bdf65c04c4822632ed2f086f6bd3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181301572,
+        "stop" : 1530181308038,
+        "duration" : 6466
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "User can edit Bio",
+      "uid" : "7670ab86d03f7162",
+      "parentUid" : "5d90bdf65c04c4822632ed2f086f6bd3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181308040,
+        "stop" : 1530181320649,
+        "duration" : 12609
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "5d90bdf65c04c4822632ed2f086f6bd3"
+  }, {
+    "name" : "tests.SignUpTests",
+    "children" : [ {
+      "name" : "User can sign up",
+      "uid" : "d2c081fdcbfab5f5",
+      "parentUid" : "17f51a816f75ad4cb76da980634f4bcd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1530181326826,
+        "stop" : 1530181338429,
+        "duration" : 11603
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "17f51a816f75ad4cb76da980634f4bcd"
+  } ]
+}

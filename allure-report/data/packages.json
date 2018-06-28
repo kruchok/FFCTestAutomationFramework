@@ -1,0 +1,149 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "tests",
+    "children" : [ {
+      "name" : "LessonsTests",
+      "children" : [ {
+        "name" : "User can run tests and get success message",
+        "uid" : "319f58bb45ef35c2",
+        "parentUid" : "1fbbdca05d1b48fffebc54dae131e677",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181226045,
+          "stop" : 1530181232189,
+          "duration" : 6144
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "User can navigate throughout lessons",
+        "uid" : "441190fc0ec4cf52",
+        "parentUid" : "1fbbdca05d1b48fffebc54dae131e677",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181232428,
+          "stop" : 1530181241155,
+          "duration" : 8727
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "1fbbdca05d1b48fffebc54dae131e677"
+    }, {
+      "name" : "LogOutTests",
+      "children" : [ {
+        "name" : "User can log out",
+        "uid" : "d5d665f4101213f8",
+        "parentUid" : "e303c31885d77152102058d39f0cdad7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181245298,
+          "stop" : 1530181248514,
+          "duration" : 3216
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "e303c31885d77152102058d39f0cdad7"
+    }, {
+      "name" : "SignInTests",
+      "children" : [ {
+        "name" : "User can sign in",
+        "uid" : "56826a26a943d29",
+        "parentUid" : "4f2e64c7adc3127acf3fbcb55403158d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181268859,
+          "stop" : 1530181277277,
+          "duration" : 8418
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "4f2e64c7adc3127acf3fbcb55403158d"
+    }, {
+      "name" : "AccountSettingsTests",
+      "children" : [ {
+        "name" : "User can change language",
+        "uid" : "caf5be3f07d710e7",
+        "parentUid" : "c5f03fd5940497a6ffa9823f3c7942c7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181287373,
+          "stop" : 1530181293406,
+          "duration" : 6033
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "User can change username",
+        "uid" : "1f2b05b4adbff216",
+        "parentUid" : "c5f03fd5940497a6ffa9823f3c7942c7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181293408,
+          "stop" : 1530181297264,
+          "duration" : 3856
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "User can change email",
+        "uid" : "be2233d2bf2600c2",
+        "parentUid" : "c5f03fd5940497a6ffa9823f3c7942c7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181297267,
+          "stop" : 1530181301567,
+          "duration" : 4300
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "User can edit 'Internet Presence' form",
+        "uid" : "b25983adb67df3b",
+        "parentUid" : "c5f03fd5940497a6ffa9823f3c7942c7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181301572,
+          "stop" : 1530181308038,
+          "duration" : 6466
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "User can edit Bio",
+        "uid" : "7670ab86d03f7162",
+        "parentUid" : "c5f03fd5940497a6ffa9823f3c7942c7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181308040,
+          "stop" : 1530181320649,
+          "duration" : 12609
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "c5f03fd5940497a6ffa9823f3c7942c7"
+    }, {
+      "name" : "SignUpTests",
+      "children" : [ {
+        "name" : "User can sign up",
+        "uid" : "d2c081fdcbfab5f5",
+        "parentUid" : "bf395c1ed745334e8249beca0754c5e9",
+        "status" : "passed",
+        "time" : {
+          "start" : 1530181326826,
+          "stop" : 1530181338429,
+          "duration" : 11603
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "bf395c1ed745334e8249beca0754c5e9"
+    } ],
+    "uid" : "bf49149a3821e34f7608bb6885d52868"
+  } ]
+}

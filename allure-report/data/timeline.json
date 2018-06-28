@@ -1,0 +1,125 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "User can run tests and get success message",
+    "uid" : "319f58bb45ef35c2",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181226045,
+      "stop" : 1530181232189,
+      "duration" : 6144
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can edit 'Internet Presence' form",
+    "uid" : "b25983adb67df3b",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181301572,
+      "stop" : 1530181308038,
+      "duration" : 6466
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can navigate throughout lessons",
+    "uid" : "441190fc0ec4cf52",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181232428,
+      "stop" : 1530181241155,
+      "duration" : 8727
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can change language",
+    "uid" : "caf5be3f07d710e7",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181287373,
+      "stop" : 1530181293406,
+      "duration" : 6033
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can sign up",
+    "uid" : "d2c081fdcbfab5f5",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181326826,
+      "stop" : 1530181338429,
+      "duration" : 11603
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can sign in",
+    "uid" : "56826a26a943d29",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181268859,
+      "stop" : 1530181277277,
+      "duration" : 8418
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can change email",
+    "uid" : "be2233d2bf2600c2",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181297267,
+      "stop" : 1530181301567,
+      "duration" : 4300
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can edit Bio",
+    "uid" : "7670ab86d03f7162",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181308040,
+      "stop" : 1530181320649,
+      "duration" : 12609
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can change username",
+    "uid" : "1f2b05b4adbff216",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181293408,
+      "stop" : 1530181297264,
+      "duration" : 3856
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "User can log out",
+    "uid" : "d5d665f4101213f8",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1530181245298,
+      "stop" : 1530181248514,
+      "duration" : 3216
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  } ]
+}
