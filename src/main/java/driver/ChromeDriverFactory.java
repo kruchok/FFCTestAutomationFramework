@@ -20,6 +20,7 @@ public class ChromeDriverFactory implements DriverFactory {
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("window-size=1200,1100");
             return new ChromeDriver(options);
         } else {
             return new ChromeDriver();
