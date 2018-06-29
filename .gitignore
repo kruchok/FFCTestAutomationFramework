@@ -1,8 +1,8 @@
 # Compiled class file
 *.class
-#allure-report/
-#allure-results/
-#!allure-results/environment.properties
+allure-report/
+allure-results/
+!allure-results/environment.properties
 target/
 # Log file
 *.log
