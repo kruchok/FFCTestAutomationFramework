@@ -1,11 +1,13 @@
 package pages;
 
+import infrastructure.Driver;
+import infrastructure.EmailGenerator;
 import infrastructure.MailHog;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.navigation.HeaderNavigation;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 /**
@@ -20,8 +22,14 @@ public class SignPage extends PageObject {
     @FindBy(css = "input[type=\"email\"]")
     private WebElement emailField;
 
-    @FindBy(id = "magic-btn")
+    @FindBy(id = "send-email-btn")
     private WebElement submitButton;
+
+    @FindBy(id = "code")
+    private WebElement codeInput;
+
+    @FindBy(id = "send-code-btn")
+    private WebElement submitCodeButton;
 
 
     /**
@@ -46,10 +54,29 @@ public class SignPage extends PageObject {
 
     @Step("Sign in user with {email} email")
     public void signIn(String email) {
-        this.enterEmail(email).clickGetLinkButton();
-        MailHog mailHog = new MailHog();
-        mailHog.open();
-        mailHog.followLinkToSignIn();
+        this.enterEmail(email).clickGetCodeButton();
+        EmailGenerator generator = new EmailGenerator();
+        generator.openInNewTab();
+        String code = generator.getCode();
+        this.enterCode(code).submit();
+        try {
+            Driver.waitForElement(3).until(ExpectedConditions.urlToBe(PrivacyPolicyPage.getUrl()));
+            new PrivacyPolicyPage().acceptTerms();
+        } catch (TimeoutException e) {
+            Driver.waitForElement(5).until(ExpectedConditions.urlToBe(Driver.baseUrl));
+        }
+
+
+
+    }
+
+    public SignPage enterCode(String code) {
+        codeInput.sendKeys(code);
+        return this;
+    }
+
+    public void submit() {
+        submitCodeButton.click();
     }
 
 
@@ -61,8 +88,13 @@ public class SignPage extends PageObject {
     public class EmailCommand {
 
         @Step("Click 'Get a magic link' button")
-        public void clickGetLinkButton() {
+        public void clickGetCodeButton() {
             submitButton.click();
+        }
+
+        @Deprecated
+        public void clickGetLinkButton() {
+
         }
     }
 

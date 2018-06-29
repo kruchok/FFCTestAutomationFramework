@@ -89,7 +89,7 @@ public class AccountSettingsPage extends PageObject{
     /**
      * 'Internet presence' form.
      */
-    @FindBy(id = "github-url")
+    @FindBy(id = "github-profile")
     private WebElement githubURLField;
 
     @FindBy(id = "linkedin")
@@ -98,7 +98,7 @@ public class AccountSettingsPage extends PageObject{
     @FindBy(id = "twitter")
      private WebElement twitterField;
 
-    @FindBy(id = "website")
+    @FindBy(id = "personal-website")
     private WebElement websiteField;
 
     @FindBy(css = "#internet-handle-settings button[type=\"submit\"]")
@@ -107,7 +107,7 @@ public class AccountSettingsPage extends PageObject{
     /**
      * Success/failure message
      */
-    @FindBy(css = ".notification-list .notification-bar-message")
+    @FindBy(css = ".notification-bar-message")
     private WebElement message;
 
     @Step("Open Account Settings page")
@@ -143,7 +143,7 @@ public class AccountSettingsPage extends PageObject{
     @Step("Verify that username is updated")
     public boolean isUsernameUpdated(String username) {
         String successMessage = getSuccessMessage();
-        return successMessage.endsWith("Username updated successfully") ||
+        return successMessage.endsWith("Your username has been updated successfully.") ||
                 usernameField.getAttribute("value").equals(username);
     }
 

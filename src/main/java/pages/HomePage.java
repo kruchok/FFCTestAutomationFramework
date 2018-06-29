@@ -15,8 +15,8 @@ public class HomePage extends PageObject {
 
     protected static String url = Driver.baseUrl;
 
-    @FindBy(css = "a[href=\"/signin\"].btn-block")
-    private WebElement sighUpLink;
+    @FindBy(css = "a[href=\"/signin\"]")
+    private WebElement sighInLink;
 
 
     /**
@@ -32,16 +32,16 @@ public class HomePage extends PageObject {
     }
 
     @Step("Open Sign Up page by clicking 'Start coding' button")
-    public void openSignUpPage() {
-       sighUpLink.click();
+    public void openSignInPage() {
+       sighInLink.click();
     }
 
     @Step("Verify that Home page is opened")
-    public static boolean isAt() {
+    public boolean isAt() {
         return Driver.isCurrentUrl(Driver.baseUrl);
     }
 
-    public static String getUrl() {
+    public String getUrl() {
         return url;
     }
 }

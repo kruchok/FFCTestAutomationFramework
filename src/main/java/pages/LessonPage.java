@@ -16,19 +16,18 @@ import java.util.regex.Pattern;
 
 public class LessonPage extends PageObject {
 
-    private static final String URL = Driver.baseUrl + Driver.getRelativeUrl("challenges") +
-            Driver.getRelativeUrl("basicHtmlAndHtml5") +
-            Driver.getRelativeUrl("sayHello");
+    private static final String URL = "https://learn.freecodecamp.org";
+    private static final String HELLO_LESSON = "/responsive-web-design/basic-html-and-html5/say-hello-to-html-elements";
 
     public LessonPage() { super(); }
 
-    @FindBy(css = ".map-accordion > .map-accordion-panel")
-    private List<WebElement> chaptersLinks;
+    @FindBy(css = ".map-challenge-title a")
+    private List<WebElement> challengeTitles;
 
-    @FindBy(css = ".challenges-title")
-    private WebElement challengeTitle;
+    @FindBy(css = ".text-center.challenge-title")
+    private WebElement tittle;
 
-    @FindBy(css = ".classic-editor .CodeMirror-code .CodeMirror-line")
+    @FindBy(css = ".view-line")
     private WebElement firstLine;
 
     @FindBy(css = ".classic-editor .CodeMirror-lines")
@@ -40,10 +39,10 @@ public class LessonPage extends PageObject {
     @FindBy(css = "body")
     private WebElement resultBody;
 
-    @FindBy(css = "button[data-reactid=\"426\"]")
+    @FindBy(css = ".instructions-panel .tool-panel-group button")
     private WebElement runCodeButton;
 
-    @FindBy(css = ".challenges-success-modal")
+    @FindBy(css = ".challenge-success-modal")
     private WebElement challengeSuccessModal;
 
     @Step("Open lesson page")
@@ -51,16 +50,15 @@ public class LessonPage extends PageObject {
         Driver.driver.get(URL);
     }
 
+    @Step("Open Hello World lesson")
+    public void openHelloWorldLesson() {
+        Driver.driver.get(URL + HELLO_LESSON);
+    }
+
     @Step("Navigate throughout chapters and lessons")
     public void checkMainMapNav() {
-        WebElement link = chaptersLinks.get((int) (Math.random()*chaptersLinks.size()));
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
-        link.findElement(By.cssSelector("a")).click();
-        checkNestedLink(link);
+        challengeTitles.remove(0);
+        challengeTitles.get((int) (Math.random()*challengeTitles.size())).click();
     }
 
     @Step("Type \"{text}\" into Editor")
@@ -98,37 +96,10 @@ public class LessonPage extends PageObject {
         return this.getResultText().equals(text);
     }
 
-    private void checkNestedLink(WebElement link) {
-        List<WebElement> nestedLinks = getNestedLinks(link);
-        WebElement nstLink = nestedLinks.get((int) ((Math.random()*nestedLinks.size())));
-        WebElement nsLink = nstLink.findElement(By.tagName("a"));
-        String chapterTitle = nsLink.getText().split("\\(")[0]
-                .replace("\n", "");
-        nsLink.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        List<WebElement> lessons = nstLink.findElements(By.tagName("a"));
-        lessons.remove(0);
-        checkLesson(chapterTitle, lessons.get((int) ((Math.random()*lessons.size()))));
-    }
-
-    private void checkLesson(String chapterTitle, WebElement lesson) {
-        String taskTitle = chapterTitle + ": " + lesson.getText();
-        lesson.click();
-        isTitle(taskTitle);
-    }
-
-    private void isTitle(String taskTitle) {
-        String title = challengeTitle.getText();
-        Assertions.assertTrue(
-                title.equalsIgnoreCase(taskTitle),
-                "Task title doesn't match lessons list. Title is \""
-                        + title
-                        + "\"" + ", but it is \""
-                        + taskTitle + "\"");
+    @Step
+    public boolean isTitle() {
+        Driver.waitForElement(5).until(ExpectedConditions.visibilityOf(tittle));
+        return tittle.isDisplayed();
     }
 
     public String getEditorText() {
@@ -136,7 +107,7 @@ public class LessonPage extends PageObject {
     }
 
     public List<WebElement> getNestedLinks(WebElement link) {
-        return link.findElements(By.cssSelector(".map-accordion-panel.map-accordion-panel-default"));
+        return link.findElements(By.cssSelector(".map-title"));
     }
 
     public String getResultText() {

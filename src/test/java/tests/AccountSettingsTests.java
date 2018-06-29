@@ -19,7 +19,7 @@ import utils.StringGenerator;
 @ExtendWith(AllureReportExtension.class)
 class AccountSettingsTests {
 
-    private static String email = StringGenerator.generateEmail();
+//    private static String email = StringGenerator.generateEmail();
     private static String username = StringGenerator.generateUsername();
     private static String name = CsvDataProvider.get("name");
     private static String location = CsvDataProvider.get("location");
@@ -34,7 +34,10 @@ class AccountSettingsTests {
 
     @BeforeAll
     static void preconditionSetUp() {
-        new SignUpPage().signUp(email);
+        String email = new EmailGenerator().getEmail();
+        SignInPage signInPage = new SignInPage();
+        signInPage.open();
+        new SignInPage().signIn(email);
     }
 
     @BeforeEach
@@ -63,6 +66,7 @@ class AccountSettingsTests {
     }
 
     @Test
+    @Disabled("This feature was recently deprecated")
     @DisplayName("User can change email")
     @Severity(SeverityLevel.CRITICAL)
     void canChangeEmail() {
@@ -73,6 +77,7 @@ class AccountSettingsTests {
     }
 
     @Test
+    @Disabled("This feature was recently deprecated")
     @DisplayName("User can change language")
     @Severity(SeverityLevel.CRITICAL)
     void canChangeLanguage() {
@@ -107,6 +112,5 @@ class AccountSettingsTests {
     @AfterAll
     static void cleanUp() {
         new SignInPage().cleanUp();
-        new MailHog().cleanUp();
     }
 }

@@ -15,7 +15,6 @@ public class BeforeTestClass implements BeforeAllCallback {
         Config.initProperties();
         Driver.setDriver();
         Driver.initBaseUrl();
-        Driver.driver.get(Driver.baseUrl);
         AllureEnvironment allureEnvironment = new AllureEnvironment();
         CsvDataProvider.init();
         Driver.logger = LogManager.getLogger();

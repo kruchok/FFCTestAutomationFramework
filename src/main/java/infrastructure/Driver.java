@@ -64,6 +64,12 @@ public class Driver {
         driver.switchTo().window(windows.get(lastWinIndex));
     }
 
+    public static void switchToPreviousWindow() {
+        windows = new ArrayList<>(driver.getWindowHandles());
+        int prevWinIndex = windows.size() - 2;
+        driver.switchTo().window(windows.get(prevWinIndex));
+    }
+
     public static void refreshPage() {
         Driver.driver.navigate().refresh();
     }
@@ -106,8 +112,8 @@ public class Driver {
             baseUrl = Config.getProperty("localhost");
         } else if (environment.equalsIgnoreCase("demo")) {
             baseUrl = Config.getProperty("demo");
-        } else if (environment.equalsIgnoreCase("external")) {
-            baseUrl = Config.getProperty("external");
+        } else if (environment.equalsIgnoreCase("prod")) {
+            baseUrl = Config.getProperty("prod");
         }
     }
 
@@ -117,5 +123,13 @@ public class Driver {
 
     public static boolean isCurrentUrl(String url) {
         return waitForElement(20).until(ExpectedConditions.urlToBe(url));
+    }
+
+    public static void clearCookies() {
+        Driver.getDriver().manage().deleteAllCookies();
+    }
+
+    public static void clearLocalStorage() {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.localStorage.clear();");
     }
 }

@@ -23,11 +23,14 @@ import utils.StringGenerator;
 @ExtendWith(AllureReportExtension.class)
 class LogOutTests {
 
-    private static String email = StringGenerator.generateEmail();
+//    private static String email = StringGenerator.generateEmail();
 
     @BeforeAll
     static void beforeClass() {
-        new SignUpPage().signUp(email);
+        String email = new EmailGenerator().getEmail();
+        SignInPage signInPage = new SignInPage();
+        signInPage.open();
+        new SignInPage().signIn(email);
     }
 
     @Test
@@ -41,15 +44,15 @@ class LogOutTests {
         settingsPage.clickSignOutButton();
 
         Assertions.assertTrue(new HomePage().isAt(), "Current URL is " + Driver.driver.getCurrentUrl() +
-                " while should be " + HomePage.getUrl());
+                " while should be " + new HomePage().getUrl());
     }
 
     @AfterAll
     static void afterClass() {
+        String email = new EmailGenerator().getEmail();
         SignInPage signInPage = new SignInPage();
         signInPage.open();
         signInPage.signIn(email);
         signInPage.cleanUp();
-        new MailHog().cleanUp();
     }
 }

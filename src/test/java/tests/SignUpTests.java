@@ -4,11 +4,7 @@ import infrastructure.*;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.*;
 import utils.StringGenerator;
@@ -17,7 +13,7 @@ import utils.StringGenerator;
  * Created by eugeniya.kruchok on 27.02.2018.
  * Instance of page must be initialized to work with it.
  */
-
+@Disabled("This feature was recently deprecated")
 @ExtendWith(BeforeTestClass.class)
 @ExtendWith(AfterTestClass.class)
 @ExtendWith(AllureReportExtension.class)
@@ -43,7 +39,7 @@ class SignUpTests {
          */
 
         homePage.open();
-        homePage.openSignUpPage();
+        homePage.openSignInPage();
         signUpPage.enterEmail(email).clickGetLinkButton();
 
         Assertions.assertTrue(signUpPage.isSuccess(), "Wrong text for success message");

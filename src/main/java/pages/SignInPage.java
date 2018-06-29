@@ -25,10 +25,4 @@ public class SignInPage extends SignPage {
     public void open() {
         Driver.driver.get(url);
     }
-
-    @Step("Verify that success Sign In message is displayed")
-    public boolean isSuccess() {
-        Driver.waitForElement(10).until(ExpectedConditions.visibilityOf(successText));
-        return successText.getText().contains("If you entered a valid email, a magic link is on its way");
-    }
 }

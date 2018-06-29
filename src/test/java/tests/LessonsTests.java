@@ -20,6 +20,7 @@ class LessonsTests {
         LessonPage lessonPage = new LessonPage();
         lessonPage.open();
         lessonPage.checkMainMapNav();
+        Assertions.assertTrue(lessonPage.isTitle());
     }
 
     @Test
@@ -28,7 +29,7 @@ class LessonsTests {
     void canRunTests() {
         String text = "Hello World!";
         LessonPage lessonPage = new LessonPage();
-        lessonPage.open();
+        lessonPage.openHelloWorldLesson();
         lessonPage.typeInEditor("<h1>" + text + "</h1>");
         lessonPage.runTests();
         Assertions.assertTrue(lessonPage.isSuccessModal(), "There is no Success modal");
