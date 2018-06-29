@@ -31,7 +31,7 @@ public class HomePage extends PageObject {
         Driver.logger.debug(this.getClass().getSimpleName() + " is opened at" + CurrentTime.getCurrentTime());
     }
 
-    @Step("Open Sign Up page by clicking 'Start coding' button")
+    @Step("Open Sign In page")
     public void openSignInPage() {
        sighInLink.click();
     }

@@ -96,7 +96,7 @@ public class LessonPage extends PageObject {
         return this.getResultText().equals(text);
     }
 
-    @Step
+    @Step("Verify that title of lesson presents")
     public boolean isTitle() {
         Driver.waitForElement(5).until(ExpectedConditions.visibilityOf(tittle));
         return tittle.isDisplayed();

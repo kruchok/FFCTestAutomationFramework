@@ -70,11 +70,13 @@ public class SignPage extends PageObject {
 
     }
 
+    @Step("Enter {code} into Code field")
     public SignPage enterCode(String code) {
         codeInput.sendKeys(code);
         return this;
     }
 
+    @Step("Submit code")
     public void submit() {
         submitCodeButton.click();
     }
@@ -87,7 +89,7 @@ public class SignPage extends PageObject {
 
     public class EmailCommand {
 
-        @Step("Click 'Get a magic link' button")
+        @Step("Click 'Get code' button")
         public void clickGetCodeButton() {
             submitButton.click();
         }

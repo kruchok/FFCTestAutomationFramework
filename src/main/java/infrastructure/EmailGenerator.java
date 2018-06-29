@@ -42,7 +42,7 @@ public class EmailGenerator extends PageObject {
         Driver.driver.get(URL);
     }
 
-    @Step("Open email page on Mail Generator for {email}")
+    @Step("Open Mail Generator page in new tab")
     public void openInNewTab() {
         ((JavascriptExecutor) Driver.driver).executeScript("window.open('" + URL + "');");
         Driver.switchToLastWindow();
@@ -61,6 +61,7 @@ public class EmailGenerator extends PageObject {
         return mail.getAttribute("value");
     }
 
+    @Step("Get code for authentication")
     public String getCode() {
         String code = "";
         try {

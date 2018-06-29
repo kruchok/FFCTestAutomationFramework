@@ -31,6 +31,7 @@ public class PrivacyPolicyPage extends PageObject {
         return Driver.waitForElement(10).until(ExpectedConditions.urlToBe(url));
     }
 
+    @Step("Accept terms and privacy policy")
     public void acceptTerms() {
         terms.click();
         privacy.click();
