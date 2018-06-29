@@ -14,10 +14,15 @@ public class ChromeDriverFactory implements DriverFactory {
     public WebDriver createDriver() {
 
         ChromeDriverManager.getInstance().setup();
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-dev-shm-usage");
-        return new ChromeDriver();
+        ChromeOptions options;
+        if (System.getProperty("mode", "none").equals("headless")) {
+            options = new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            return new ChromeDriver(options);
+        } else {
+            return new ChromeDriver();
+        }
     }
 }
